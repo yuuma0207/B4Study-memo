@@ -8,10 +8,35 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-
+  SkyAxでは、平均場理論を用いて原子核の基底状態における様々な性質を計算することができる。
+  SkyAxはHartree-Fock方程式を軸対称性を課した2次元の空間自由度の元で計算するプログラムである。
+  本稿では、SkyAxの実装にあたってのメモを記す。
 \end{abstract}
 \tableofcontents
 \newpage
+\section{The Skyrme-Hartree-Fock theory}
+\subsection*{The single-particle basis}
+平均場理論では、1粒子波動関数$\psi_\alpha$と、占有確率振幅$v_{\alpha}$の組
+\begin{equation}
+  \{\psi_a,\,v_\alpha,\quad\alpha=1,\ldots,\,\Omega\}
+\end{equation}
+によって、原子核の基底状態を記述する。ここで、$\Omega$は1粒子波動関数と、占有確率振幅$0\leq v_\alpha\leq 1$の個数である。
+非占有確率は$u_\alpha=\sqrt{1-v^2_\alpha}$と定義される。BCSの多体状態は、
+\begin{equation}
+  \ket{\Phi}=\prod_{\alpha>0}(u_\alpha+v_\alpha a^\dagger_\alpha a^{\dagger}_{\bar{\alpha}})\ket{0}
+\end{equation}
+と構成される。ここで、$\bar{\alpha}$は$\alpha$の時間反転対称な状態である。$a^\dagger_\alpha$は、$\psi_\alpha$の状態にあるフェルミオンの生成演算子である。
 
+\subsection{Local densities and currents}
+Skyrme-energy-density functionalは、いつかの局所的な密度と流れに依存する。これらの密度と流れは、1粒子波動関数$\psi_\alpha$と、占有確率振幅$v_\alpha$の組によって決定される。
+今回は、時間反転対称性を課しているため、time-oddな項（current, spin density）は無視する。
+密度と流れは、
+\begin{align}
+  \rho_\alpha(\bm{r})&=\sum_{\alpha\in q}\sum_{s}v_\alpha^2\abs{\psi_\alpha(\bm{r},s)}^2 & & \text{density}\\
+  \bm{J}_\alpha(\bm{r})&=-i\sum_{\alpha\in q}\sum_{ss'}v_\alpha^2\psi^*_\alpha(\bm{r},s)\nabla\cross \bm{\sigma}_{ss'}\psi_\alpha(\bm{r},s) & & \text{spin-orbit density} \\
+  \tau_q(\bm{r}) &= \sum_{\alpha\in q}\sum_{s}v_\alpha^2\abs{\nabla\psi_\alpha(\bm{r},s)}^2 & & \text{kinetic energy density} \\
+  \xi_q(\bm{r}) &= \sum_{\alpha\in q}\sum_{s}w_\alpha u_\alpha v_\alpha \psi_{\bar{\alpha}}(\bm{r},s)\psi_\alpha(\bm{r},s) & & \text{pairing density} 
+\end{align}
+と定義される。
 
 \end{document}

@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  5 OCT 2023 11:55
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  5 OCT 2023 12:16
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1352,34 +1352,54 @@ LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
 LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
 (Font)              scaled to size 8.32214pt on input line 10.
 LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 13.
+(Font)              scaled to size 9.24683pt on input line 15.
 LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 13.
+(Font)              scaled to size 9.24683pt on input line 15.
 LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 13.
+(Font)              scaled to size 13.31541pt on input line 15.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 13.
+(Font)              scaled to size 13.31541pt on input line 15.
 LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 13.
+(Font)              scaled to size 13.31541pt on input line 15.
 LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 13.
-(out/summary/summary.toc)
+(Font)              scaled to size 13.31541pt on input line 15.
+(out/summary/summary.toc
+LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
+(Font)              scaled to size 6.47278pt on input line 2.
+LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
+(Font)              scaled to size 4.62341pt on input line 2.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 2.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 6.47278pt on input line 2.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 4.62341pt on input line 2.
+)
 \tf@toc=\write5
 \openout5 = `summary.toc'.
 
 [1
 
-] (out/summary/summary.aux)
+]
+LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
+(Font)              scaled to size 11.09619pt on input line 18.
+LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
+(Font)              scaled to size 11.09619pt on input line 18.
+LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
+(Font)              scaled to size 6.47278pt on input line 39.
+LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
+(Font)              scaled to size 4.62341pt on input line 39.
+[2] (out/summary/summary.aux)
 Package rerunfilecheck Info: File `summary.out' has not changed.
-(rerunfilecheck)             Checksum: 05B9FF7757FE6A446D8F294B02146D28;54.
+(rerunfilecheck)             Checksum: 1BA876664E8CE6A57800FEC9A905146E;459.
  ) 
 Here is how much of TeX's memory you used:
- 41248 strings out of 475422
- 856711 string characters out of 5788032
- 1211188 words of memory out of 5000000
- 62313 multiletter control sequences out of 15000+600000
- 519421 words of font info for 126 fonts, out of 8000000 for 9000
+ 41280 strings out of 475422
+ 857053 string characters out of 5788032
+ 1219638 words of memory out of 5000000
+ 62336 multiletter control sequences out of 15000+600000
+ 524216 words of font info for 148 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 113i,6n,110p,1217b,1246s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 113i,10n,110p,1217b,1247s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/summary/summary.dvi (1 page, 1628 bytes).
+Output written on out/summary/summary.dvi (2 pages, 8072 bytes).
