@@ -37,6 +37,31 @@ Skyrme-energy-density functionalは、いつかの局所的な密度と流れに
   \tau_q(\bm{r}) &= \sum_{\alpha\in q}\sum_{s}v_\alpha^2\abs{\nabla\psi_\alpha(\bm{r},s)}^2 & & \text{kinetic energy density} \\
   \xi_q(\bm{r}) &= \sum_{\alpha\in q}\sum_{s}w_\alpha u_\alpha v_\alpha \psi_{\bar{\alpha}}(\bm{r},s)\psi_\alpha(\bm{r},s) & & \text{pairing density} 
 \end{align}
-と定義される。
+と定義される。$w_\alpha$は対相関のsoft cutoffであり、$q$は原子核の種類のラベルである。$q=p$は陽子、$q=n$は中性子である。
+変数$s\in \pm 1$は波動関数のスピノル部分である。今後、全密度や全流束をよく用いるが、これは核子のラベルがない物理量で表す。
+例えば、全局所密度は
+\begin{equation}
+  \rho = \rho_p + \rho_n
+\end{equation}
+である。
+
+\section*{Skyrme-Hartree-Fockの実装について}
+Skyrme-Hartree-Fockは以下の式である：
+\begin{align}
+  \hat{h}\psi_\alpha &= \varepsilon_\alpha\psi_\alpha \\
+  \hat{h}_q &= U_q(\bm{r})-\div\qty[B_q(\bm{r})\grad]+i\bm{W}_q\cdot\qty(\bm{\sigma}\cross \grad)
+\end{align}
+$\hat{h}_q$の内訳として、
+\begin{align}
+  U_q(\bm{r}) =& b_0\rho - b'_0\rho_q + b_1\tau - b'_1\tau_q - b_2\Delta\rho + b'_2\Delta\rho_q + b_3\frac{\gamma+2}{3}\rho^{\gamma+1}-b'_3\frac{2}{3}\rho^{\gamma}\rho_q \notag\\
+  & - b'_3\frac{\gamma}{3}\rho^{\gamma-1}\sum_{q'}\rho_{q'}^2 - b_4\div{\bm{J}}-b'_4\div{\bm{J}_q} + \delta_{pq}\qty(U_C\frac{e^2}{2}\int dV'\,\frac{\rho_p(\bm{r}')}{\abs{\bm{r}-\bm{r}'}}-e^2\qty(\frac{3}{\pi})^{1/3}\rho_p^{1/3})
+\end{align}
+\begin{equation}
+  B_q(\bm{r}) = \frac{\hbar^2}{2m_q}+b_1\rho -b'_1\rho_q 
+\end{equation}
+\begin{equation}
+  \bm{W}_q(\bm{r}) = b_4\grad\rho + b'_4\grad\rho_q - 2c_1\bm{J} + 2c'_1\bm{J}_q
+\end{equation}
+である。
 
 \end{document}
