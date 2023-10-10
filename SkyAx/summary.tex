@@ -79,4 +79,22 @@ spin-orbit densityの$ss'$の和について考える。まず、
   \sum_{ss'}\psi^*_{\alpha}(\bm{r},s)\curl{\bm{\sigma}_{ss'}\psi_\alpha(\bm{r},s)} = 
 \end{equation}
 
+\section{式変形など}
+
+\begin{equation}
+  \hat{h}_q = U_q(\bm{r}) - \div\qty[B_q(\bm{r})\grad] + i\bm{W}_q\cdot\qty(\bm{\sigma}\cross \grad)
+\end{equation}
+$U_q$を求めるためには$\div{\bm{J}}_q$の計算が必要。そのための計算は波動関数の1階微分のみで計算できる。
+$m_{\alpha}^{(-)}=m_{\alpha}^{(+)}+1 = m_{\alpha}+1$として、
+
+\begin{align}
+  \div{\bm{J}}_q &= \sum_{\alpha\in q}(\bm{\sigma}\cdot\grad\psi_\alpha)^{\dagger}(\bm{\sigma}\cdot\grad\psi_\alpha) - \tau_q \\
+\bm{\sigma}\cdot\grad\psi_\alpha &= 
+  \begin{pmatrix}
+    \grad_z\psi_\alpha^{(+)} + (\grad_r + m_\alpha^{(-)}/r)\psi_\alpha^{(-)} \\
+    \qty[-\grad_z\psi_\alpha^{(-)} + (\grad_r - m_\alpha^{(+)} /r)\psi_\alpha^{(+)}]e^{i\phi}
+  \end{pmatrix}e^{im\phi} \\
+  \tau_q &= \sum_{\alpha\in q}\qty(\grad\psi_\alpha)^{\dagger}\cdot\qty(\grad\psi_\alpha) = \sum_{\alpha,\pm}\qty{\abs{\grad_z\psi_{\alpha}^{(\pm)}}^2 + \abs{\grad_r\psi_{\alpha}^{(\pm)}}^2 + \qty(\frac{m_{\alpha}^{(\pm)}}{r})^2\abs{\psi_{\alpha}^{(\pm)}}^2}
+\end{align}
+
 \end{document}
