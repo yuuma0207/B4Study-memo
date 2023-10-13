@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  10 OCT 2023 16:20
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  13 OCT 2023 10:30
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1391,15 +1391,15 @@ LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
 (Font)              scaled to size 4.62341pt on input line 39.
 [2] [3] [4] (out/summary/summary.aux)
 Package rerunfilecheck Info: File `summary.out' has not changed.
-(rerunfilecheck)             Checksum: EDA3CAAB19E2753E2F35D361FB6AFC95;815.
+(rerunfilecheck)             Checksum: 0367BE38A2940F00CA23ECFD1F0873BD;946.
  ) 
 Here is how much of TeX's memory you used:
  41281 strings out of 475422
  857064 string characters out of 5788032
- 1229034 words of memory out of 5000000
+ 1228182 words of memory out of 5000000
  62337 multiletter control sequences out of 15000+600000
  524216 words of font info for 148 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  113i,16n,110p,1217b,1253s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/summary/summary.dvi (4 pages, 20284 bytes).
+Output written on out/summary/summary.dvi (4 pages, 22228 bytes).
