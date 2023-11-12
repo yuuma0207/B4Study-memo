@@ -1,0 +1,60 @@
+%ctrl+alt+m：open Math Preview
+\documentclass[a4paper,11pt,uplatex]{jsarticle}%titlepage
+%:/usr/local/texlive/texmf-local/tex/latex/report/report.sty
+\usepackage{myreport}
+\title{Nilsson modelの実装についてのメモ}
+\author{20B01392 松本侑真}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{abstract}
+
+\end{abstract}
+\tableofcontents
+\newpage
+ハミルトニアンは
+\begin{equation}
+  H = -\frac{\hbar^2}{2m}\laplacian + \frac{m}{2}\qty(\omega_r^2(x^2+y^2) + \omega_z^2z^2)
+\end{equation}
+となり、固有エネルギーは
+\begin{equation}
+  E = \hbar\omega_r(n_x+n_y+1) + \hbar\omega_z(n_z+1/2)
+\end{equation}
+である。ここで、$n_x,\,n_y,\,n_z$はそれぞれ$x,\,y,\,z$方向の量子数である。
+ラプラシアンは円筒座標$(r=\sqrt{x^2+y^2},\phi,z)$で表すと
+\begin{equation}
+  \laplacian = \frac{1}{r}\pdv{r}\qty(r\pdv{r})+ \frac{1}{r^2}\pdv[2]{\phi} + \pdv[2]{z}
+\end{equation}
+であるため、
+\begin{equation}
+  \qty[-\frac{\hbar^2}{2m}\qty(\frac{1}{r}\pdv{r}\qty(r\pdv{r})+ \frac{1}{r^2}\pdv[2]{\phi} + \pdv[2]{z}) + \frac{m}{2}\qty(\omega_r^2r^2 + \omega_z^2z^2)]\psi = E\psi
+\end{equation}
+となる。
+$\psi = R(r)Z(z)\Phi(\phi)$と変数分離をすると、
+\begin{equation}
+  -\frac{\hbar^2}{2m}\qty(\frac{Z(z)\Phi(\phi)}{r}\pdv{r}\qty(r\pdv{R(r)}{r})+ \frac{R(r)Z(z)}{r^2}\pdv[2]{\Phi(\phi)}{\phi} + R(r)\Phi(\phi)\pdv[2]{Z(z)}{z}) 
+  + \qty[\frac{m}{2}\qty(\omega_r^2r^2 + \omega_z^2z^2)]\psi = E\psi
+\end{equation}
+となり、両辺$\psi$で割ると
+\begin{equation}
+  -\frac{\hbar^2}{2m}\qty(\frac{1}{r}\pdv{r}\qty(r\pdv{R(r)}{r})\frac{1}{R(r)} + \frac{1}{r^2}\pdv[2]{\Phi(\phi)}{\phi}\frac{1}{\Phi(\phi)} + \pdv[2]{Z(z)}{z}\frac{1}{Z(z)}) 
+  + \qty[\frac{m}{2}\qty(\omega_r^2r^2 + \omega_z^2z^2)] = E
+\end{equation}
+となる。定数$m_{\phi}$を用いて書き換えると
+\begin{equation}
+  \frac{\Phi''}{\Phi} = -\frac{2mr^2}{\hbar^2}\qty(E -\qty[\frac{m}{2}\qty(\omega_r^2r^2 + \omega_z^2z^2)] +\frac{\hbar^2}{2m}\qty(\frac{1}{r}\pdv{r}\qty(r\pdv{R(r)}{r})\frac{1}{R(r)} + \pdv[2]{Z(z)}{z}\frac{1}{Z(z)})) = -m_{\phi}^2
+\end{equation}
+となる。これより$\Phi(\phi)$の解
+\begin{equation}
+  \Phi(\phi) = A\exp(im_{\phi}\phi)
+\end{equation}
+と、$R(r),\,Z(z)$についての方程式
+\begin{equation}
+  -\frac{\hbar^2}{2m}\qty[\frac{1}{r}\pdv{r}\qty(r\pdv{R(r)}{r})\frac{1}{R(r)} + \pdv[2]{Z(z)}{z}\frac{1}{Z(z)}] = E -\qty[\frac{m}{2}\qty(\omega_r^2r^2 + \omega_z^2z^2)]
+\end{equation}
+を得る。$z$方向は1次元調和振動子の方程式であるため、解はエルミート多項式で表される：
+\begin{equation}
+  Z(z) = H_n(\sqrt{\frac{m\omega_z}{\hbar}}z)
+\end{equation}
+
+\end{document}
