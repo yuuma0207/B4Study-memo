@@ -114,6 +114,11 @@ $m_{\alpha}^{(-)}=m_{\alpha}^{(+)}+1 = m_{\alpha}+1$として、
   \begin{pmatrix}
     i\frac{m}{r}\psi^{+}e^{im\phi}  + i\partial_z \psi^{-}e^{im\phi} \\
     -i\frac{m+1}{r}\psi^{-}e^{i(m+1)\phi} - i\partial_z \psi^{+}e^{i(m+1)\phi}
+  \end{pmatrix} \\
+  &= 
+  \begin{pmatrix}
+    i(\frac{m}{r}\psi^{+} + \partial_z \psi^{-})e^{im\phi} \\
+    -i(\frac{m+1}{r}\psi^{-} + \partial_z \psi^{+})e^{i(m+1)\phi}
   \end{pmatrix}
 \end{align}
 \begin{align}
@@ -131,6 +136,11 @@ $m_{\alpha}^{(-)}=m_{\alpha}^{(+)}+1 = m_{\alpha}+1$として、
   \begin{pmatrix}
     \partial_z \psi^{-}e^{im\phi} - \partial_r \psi^{+}e^{im\phi} \\
     \partial_z \psi^{+}e^{i(m+1)\phi} + \partial_r \psi^{-}e^{i(m+1)\phi}
+  \end{pmatrix} \\
+  &= 
+  \begin{pmatrix}
+    (\partial_z \psi^{-}- \partial_r \psi^{+})e^{im\phi} \\
+    (\partial_z \psi^{+} + \partial_r \psi^{-})e^{i(m+1)\phi}
   \end{pmatrix}
 \end{align}
 \begin{align}
@@ -152,7 +162,48 @@ $m_{\alpha}^{(-)}=m_{\alpha}^{(+)}+1 = m_{\alpha}+1$として、
   \end{pmatrix}
 \end{align}
 
+すなわち、$A,\,B\in \mathbb{R}$として、$r,\,z$成分は
+\begin{equation}
+  (\curl{\bm{\sigma}})_{r,\,z}\psi_{\alpha} = 
+  \begin{pmatrix}
+    iAe^{im\phi} \\
+    iBe^{i(m+1)\phi}
+  \end{pmatrix}
+\end{equation}
+の形になっており、$\phi$成分のみ
+\begin{equation}
+  (\curl{\bm{\sigma}})_{\phi}\psi_{\alpha} = 
+  \begin{pmatrix}
+    Ae^{im\phi} \\
+    Be^{i(m+1)\phi}
+  \end{pmatrix}
+\end{equation}
+の形になっている。
+したがって、
+\begin{align}
+  \psi^{\dagger}_{\alpha}(\curl{\bm{\sigma}})_{\phi}\psi_{\alpha} &= 
+  \begin{pmatrix}
+    \psi^*_{\alpha,\uparrow}(r,z)e^{-im\phi} & \psi^*_{\alpha,\downarrow}(r,z)e^{-i(m+1)\phi}
+  \end{pmatrix} 
+  \begin{pmatrix}
+    Ae^{im\phi} \\
+    Be^{i(m+1)\phi}
+  \end{pmatrix} \\
+  &= \psi_{\alpha,\uparrow}A + \psi_{\alpha,\downarrow}B + \psi_{\alpha,\uparrow}Be^{i\phi} + \psi_{\alpha,\downarrow}Ae^{-i\phi}
+\end{align}
+となる。
+\begin{equation}
+  \bm{J}_q(\bm{r}) = \frac{1}{2i}\sum_{\alpha\in q}\qty(\psi^{\dagger}_{\alpha}(\curl{\bm{\sigma}})\psi_{\alpha} - \psi^{\top}_{\alpha}(\curl{\bm{\sigma}})\psi_{\alpha}^*) 
+  = \Im{\sum_{\alpha\in q}\qty(\psi^{\dagger}_{\alpha}(\curl{\bm{\sigma}})\psi_{\alpha})}
+\end{equation}
+であるため、計算をすると
+\begin{align}
+  J_{r,z} &= \text{Im} + \qty(\psi_{\uparrow}B + \psi_{\downarrow}A)\cos\phi \\
+  J_{\phi} &= \qty(\psi_{\uparrow}B + \psi_{\downarrow}A)\sin\phi
+\end{align}
+となる。
 
+\newpage
 \section{初期波動関数の配置方法}
 
 原子核の半径$R$は核子数$A$について、$r_0=\SI{1.2}{fm}$とすると
