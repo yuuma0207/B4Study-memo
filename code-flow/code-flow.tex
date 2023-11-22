@@ -12,4 +12,71 @@
 \tableofcontents
 \newpage
 
+\section{ハミルトニアンの計算}
+波動関数を
+\begin{equation}
+    \psi_{\alpha} = 
+    \begin{pmatrix}
+      \psi_{\alpha}^{+} \\
+      \psi_{\alpha}^{-}
+    \end{pmatrix}
+     = 
+    \begin{pmatrix}
+      f_{\alpha}^{+}e^{im\phi} \\
+      f_{\alpha}^{-}e^{i(m+1)\phi}
+    \end{pmatrix}
+\end{equation}
+とおく。ポテンシャル
+\begin{equation}
+  U,\quad \bm{W},\quad B
+\end{equation}
+が計算できれば、ハミルトニアンが求まる。
+$W$に関係する項（W\_term）は
+\begin{equation}
+  i\bm{W}\cdot(\bm{\sigma}\cross\nabla)
+\end{equation}
+となっている。ここで、
+\begin{align}
+  (\bm{\sigma}\cross\nabla)_r\psi_{\alpha} &=
+  (\sigma_{\phi}\grad_{z} - \sigma_{z}\grad_{\phi})\psi_\alpha 
+  = 
+  \begin{pmatrix}
+  -ie_-\grad_{z}  \psi_{-} - \grad_{\phi}\psi_{+} \\
+  ie_-\grad_{z}\psi_{+} + \grad_{\phi}\psi_{-}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    -i\partial_{z}f_{-} - i\frac{m}{r}f_{+} \\
+    +i\partial_{z}f_{+}  + i\frac{m+1}{r}f_{-}
+  \end{pmatrix} \\
+  (\bm{\sigma}\cross\nabla)_\phi\psi_{\alpha} &=
+  (\sigma_{z}\grad_{r} - \sigma_{r}\grad_{z})\psi_\alpha 
+  = 
+  \begin{pmatrix}
+   \grad_{r}\psi_{+} - e_{-}\grad_{z}\psi_{-} \\
+  -\grad_{r}\psi_{-} - e_{+}\grad_{z}\psi_{+}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \partial_{r}f_{+} - \partial_{z}f_{-} \\
+   -\partial_{r}f_{-} - \partial_{z}f_{+}
+  \end{pmatrix} \\ 
+  (\bm{\sigma}\cross\nabla)_z\psi_{\alpha} &=
+  (\sigma_{r}\grad_{\phi} - \sigma_{\phi}\grad_{z})\psi_\alpha 
+  = 
+  \begin{pmatrix}
+   e_{-}\grad_{\phi}\psi_{-} + ie_{-}\grad_{r}\psi_{-} \\
+   e_{+}\grad_{\phi}\psi_{+} - ie_{+}\grad_{r}\psi_{+}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+   i\frac{m+1}{r}f_{-} + i\partial_{r}f_{-} \\
+   i\frac{m}{r}  f_{+} - i\partial_{r}f_{+}
+  \end{pmatrix}
+\end{align}
+
+
+
+
+
 \end{document}
