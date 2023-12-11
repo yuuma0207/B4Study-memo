@@ -119,7 +119,19 @@ $W$に関係する項（W\_term）は
   k = (j-1)N + i
 \end{equation}
 と与えられる。
-
+\subsection{境界条件}
+$r=0$の境界条件として、偶関数であることを要求する。また、原点の値は、$U(1,j)$と同じものとする。
+$r=Nr*dr$の境界条件は固定端境界条件とする。つまり、
+\begin{align}
+  U(-i,j) &= U(i,j) \\
+  U(0,j)  &= U(1,j) \\
+  U(Nr,j) &= 0 
+\end{align}
+とすればよい。また、$z=0$の境界条件は固定端である：
+\begin{align}
+  U(i,0) &= 0 \\
+  U(i,Nz) &= 0
+\end{align}
 
 
 \end{document}

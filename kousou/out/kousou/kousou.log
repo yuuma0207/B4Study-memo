@@ -1,10 +1,10 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  11 DEC 2023 17:45
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  11 DEC 2023 17:35
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**code-flow.tex
-(./code-flow.tex
+**kousou.tex
+(./kousou.tex
 pLaTeX2e <2021-11-15u04> (based on LaTeX2e <2022-11-01>)
 L3 programming layer <2022-11-02> (/usr/local/texlive/2022/texmf-dist/tex/plate
 x/jsclasses/jsarticle.cls
@@ -1218,36 +1218,36 @@ Package: jvlisting 2011/11/17 v0.7 Formatted Program Listings
 \postlistingpenalty=\count414
 ))
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 7.
+h' as default language. on input line 8.
 LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 7.
+(Font)              scaled to size 9.24683pt on input line 8.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 7.
-(out/code-flow/code-flow.aux)
-\openout1 = `code-flow.aux'.
+(Font)              scaled to size 9.24683pt on input line 8.
+(out/kousou/kousou.aux)
+\openout1 = `kousou.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for JY2/mc/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for JY2/mc/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
 *geometry* verbose mode - [ preamble ] result:
@@ -1292,7 +1292,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 
-Package chemgreek Info: Activating mapping `default' on line 7.
+Package chemgreek Info: Activating mapping `default' on line 8.
 
 
 Package siunitx Warning: Detected the "physics" package:
@@ -1312,90 +1312,66 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 7.
-Package hyperref Info: Link coloring ON on input line 7.
-(out/code-flow/code-flow.out) (out/code-flow/code-flow.out)
+or `english'. on input line 8.
+Package hyperref Info: Link coloring ON on input line 8.
+(out/kousou/kousou.out) (out/kousou/kousou.out)
 \@outlinefile=\write4
-\openout4 = `code-flow.out'.
+\openout4 = `kousou.out'.
 
 \c@lstlisting=\count415
 \docmute@nestinglevel=\count416
 LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 15.9785pt on input line 9.
+(Font)              scaled to size 15.9785pt on input line 10.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 15.9785pt on input line 9.
+(Font)              scaled to size 15.9785pt on input line 10.
 LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 9.
+(Font)              scaled to size 11.09619pt on input line 10.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 9.
+(Font)              scaled to size 11.09619pt on input line 10.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 7.39746pt on input line 9.
+(Font)              scaled to size 7.39746pt on input line 10.
 LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 9.
+(Font)              scaled to size 5.5481pt on input line 10.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 9.
+(Font)              scaled to size 11.09619pt on input line 10.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 7.39746pt on input line 9.
+(Font)              scaled to size 7.39746pt on input line 10.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 9.
+(Font)              scaled to size 5.5481pt on input line 10.
 LaTeX Font Info:    Trying to load font information for U+esvect on input line 
-9.
+10.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/esvect/uesvect.fd
 File: uesvect.fd 
-) [1
-
-]
-LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 9.
-LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 9.
-[1]
-LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 12.
-LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 12.
-LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 12.
-LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 12.
-(out/code-flow/code-flow.toc
-LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 6.47278pt on input line 2.
-LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 2.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 2.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 6.47278pt on input line 2.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 2.
 )
-\tf@toc=\write5
-\openout5 = `code-flow.toc'.
-
-[1]
 LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 78.
+(Font)              scaled to size 9.24683pt on input line 11.
 LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 78.
+(Font)              scaled to size 9.24683pt on input line 11.
+LaTeX Font Info:    Font shape `JT2/hmc/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 11.
+LaTeX Font Info:    Font shape `JY2/hmc/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 11.
+LaTeX Font Info:    Font shape `JT2/hgt/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 11.
+LaTeX Font Info:    Font shape `JY2/hgt/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 11.
+(out/kousou/kousou.toc)
+\tf@toc=\write5
+\openout5 = `kousou.toc'.
 
-Overfull \hbox (16.83078pt too wide) detected at line 107
-[][][][]\OML/cmm/m/it/10 f[] \OT1/cmr/m/n/10 + []\OML/cmm/m/it/10 f[] \OT1/cmr/
-m/n/10 + []\OML/cmm/m/it/10 f[] \OT1/cmr/m/n/10 + []\OML/cmm/m/it/10 f[] \OT1/c
-mr/m/n/10 + []\OML/cmm/m/it/10 f[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^Z[]
- []
+[1
 
-[2] [3] (out/code-flow/code-flow.aux)
-Package rerunfilecheck Info: File `code-flow.out' has not changed.
-(rerunfilecheck)             Checksum: 00590843A00836EC4EFF7E8BB98E24A5;382.
+] [2] (out/kousou/kousou.aux)
+Package rerunfilecheck Info: File `kousou.out' has not changed.
+(rerunfilecheck)             Checksum: 876CBD8226E163A0B5B37191459E8703;349.
  ) 
 Here is how much of TeX's memory you used:
- 41270 strings out of 475422
- 857015 string characters out of 5788032
- 1231550 words of memory out of 5000000
- 62328 multiletter control sequences out of 15000+600000
- 522739 words of font info for 140 fonts, out of 8000000 for 9000
+ 41247 strings out of 475422
+ 856662 string characters out of 5788032
+ 1212567 words of memory out of 5000000
+ 62313 multiletter control sequences out of 15000+600000
+ 518523 words of font info for 121 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 113i,14n,110p,1225b,1267s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 113i,6n,110p,1202b,1246s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/code-flow/code-flow.dvi (5 pages, 14252 bytes).
+Output written on out/kousou/kousou.dvi (2 pages, 3940 bytes).
