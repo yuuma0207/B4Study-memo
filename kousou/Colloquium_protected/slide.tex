@@ -1,0 +1,426 @@
+\RequirePackage{plautopatch}
+\documentclass[12pt,aspectratio=169,xcolor=dvipsnames,table,dvipdfmx]{beamer}
+\usepackage{bxdpx-beamer} % dvipdfmxなので必要
+\usepackage{appendixnumberbeamer}
+
+%Beamerの設定
+\usetheme{Boadilla}
+
+%Beamerフォント設定
+\usefonttheme{professionalfonts} % Be professional!
+\usepackage[T1]{fontenc}
+\usepackage{mlmodern}  % 太いComputer Modern
+% MLmodernのバグを修正: cf. https://tex.stackexchange.com/questions/646333/size-of-integral-symbol-in-section-header-with-mlmodern
+\DeclareFontFamily{OMX}{mlmex}{}
+\DeclareFontShape{OMX}{mlmex}{m}{n}{%
+   <->mlmex10%
+   }{} 
+\usepackage{newtxtext} % 数式以外をTXフォントで上書き
+\usepackage[deluxe,uplatex]{otf} % 日本語多ウェイト化
+\usepackage{physics,bm}
+\usepackage{mhchem}
+\usepackage{amsmath,amsfonts,amssymb,mathtools,amsthm}
+\DeclareMathOperator{\sgn}{sgn}
+\renewcommand{\familydefault}{\sfdefault}  % 英文をサンセリフ体に
+\renewcommand{\kanjifamilydefault}{\gtdefault}  % 日本語をゴシック体に
+\usefonttheme{structurebold} % タイトル部を太字
+\setbeamerfont{alerted text}{series=\bfseries} % Alertを太字
+\setbeamerfont{section in toc}{series=\mdseries} % 目次は太字にしない
+\setbeamerfont{frametitle}{size=\Large} % フレームタイトル文字サイズ
+\setbeamerfont{title}{size=\LARGE} % タイトル文字サイズ
+\setbeamerfont{date}{size=\small}  % 日付文字サイズ
+
+% Babel (日本語の場合のみ・英語の場合は不要)
+\uselanguage{japanese}
+\languagepath{japanese}
+\deftranslation[to=japanese]{Theorem}{定理}
+\deftranslation[to=japanese]{Lemma}{補題}
+\deftranslation[to=japanese]{Example}{例}
+\deftranslation[to=japanese]{Examples}{例}
+\deftranslation[to=japanese]{Definition}{定義}
+\deftranslation[to=japanese]{Definitions}{定義}
+\deftranslation[to=japanese]{Problem}{問題}
+\deftranslation[to=japanese]{Solution}{解}
+\deftranslation[to=japanese]{Fact}{事実}
+\deftranslation[to=japanese]{Proof}{証明}
+\def\proofname{証明}
+
+%Beamer色設定
+\definecolor{UniBlue}{RGB}{0,150,200} 
+\definecolor{AlertOrange}{RGB}{255,76,0}
+\definecolor{AlmostBlack}{RGB}{38,38,38}
+\setbeamercolor{normal text}{fg=AlmostBlack}  % 本文カラー
+\setbeamercolor{structure}{fg=UniBlue} % 見出しカラー
+\setbeamercolor{block title}{fg=UniBlue!50!black} % ブロック部分タイトルカラー
+\setbeamercolor{alerted text}{fg=AlertOrange} % \alert 文字カラー
+\mode<beamer>{
+    \definecolor{BackGroundGray}{RGB}{254,254,254}
+    \setbeamercolor{background canvas}{bg=BackGroundGray} % スライドモードのみ背景をわずかにグレーにする
+}
+
+%フラットデザイン化
+\setbeamertemplate{blocks}[rounded] % Blockの影を消す
+\useinnertheme{circles} % 箇条書きをシンプルに
+\setbeamertemplate{navigation symbols}{} % ナビゲーションシンボルを消す
+\setbeamertemplate{footline}[frame number] % フッターはスライド番号のみ
+\setbeamerfont{footline}{size=\small}    % フッターを大きくした
+
+%タイトルページ
+\setbeamertemplate{title page}{%
+    \vspace{2.5em}
+    {\usebeamerfont{title} \usebeamercolor[fg]{title} \inserttitle \par}
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle \par}
+    \vspace{1.5em}
+    \begin{flushright}
+        \usebeamerfont{author}\insertauthor\par
+        \usebeamerfont{institute}\insertinstitute \par
+        \vspace{3em}
+        \usebeamerfont{date}\insertdate\par
+      \end{flushright}
+      \vspace{-6em}
+      \begin{flushleft}
+        \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+      \end{flushleft}
+}
+
+% Algorithm系
+\usepackage{algorithm}
+\usepackage[noend]{algorithmic}
+\algsetup{linenosize=\color{fg!50}\footnotesize}
+\renewcommand\algorithmicdo{:}
+\renewcommand\algorithmicthen{:}
+\renewcommand\algorithmicrequire{\textbf{Input:}}
+\renewcommand\algorithmicensure{\textbf{Output:}}
+
+% 定理
+\theoremstyle{definition}
+\newenvironment{mythm}{\begin{alertblock}{定理}}{\end{alertblock}} %自分の結果は赤色で表示
+
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{array} % needed for \arraybackslash
+\usepackage{adjustbox} % for \adjincludegraphics
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\makeatletter
+\chardef\zenkakuSpace=\jis"2121\relax % 和文ゴースト用全角スペース
+
+\def\serifRoman#1{%
+  \ifnum0\ifnum#1<1 1\fi\ifnum#1>12 1\fi>0 %%% 引数が 1～12 の範囲外ならエラー
+    \@latex@error{\string\serifRoman: #1 must be 1..12}\@ehc
+  \fi
+  \zenkakuSpace\kern-1zw\relax %%% ゴースト処理（入口側）
+  \begingroup
+  \@tempcnta="215F\relax
+  \advance\@tempcnta by #1\relax
+  \kchardef\@roman@char=\ucs\@tempcnta\relax %% 今回対象のローマ数字
+  \kchardef\@roman@I=\ucs"2160\relax %% ヒゲとして利用するローマ数字Ⅰ
+  \@tempdima=-.132zw\relax
+  \@tempdimb=.134zw\relax
+  \@tempdimc=1zw\relax
+  \setbox1\hbox to 1zw{\yoko\hfill
+    \begin{tikzpicture}[baseline=(A.base),inner sep=0pt, outer sep=0pt]%
+    \path[use as bounding box] (-.5\@tempdimc, -.5\@tempdimc) rectangle (.5\@tempdimc, .5\@tempdimc);
+    \node (A) {\@roman@char};
+    \ifcase#1
+      \or % Ⅰ
+        \@serifRoman@a{.45}{0}% 上ヒゲ
+        \@serifRoman@b{.45}{0}% 下ヒゲ
+      \or % Ⅱ
+        \@serifRoman@a{.80}{0}% 上ヒゲ
+        \@serifRoman@b{.80}{0}% 下ヒゲ
+      \or % Ⅲ
+        \@serifRoman@a{1.10}{0}% 上ヒゲ
+        \@serifRoman@b{1.10}{0}% 下ヒゲ
+      \or % Ⅳ
+        \@serifRoman@a{.60}{-.24}% 左上ヒゲ
+        \@serifRoman@a{.30}{.38}%% 右上ヒゲ
+        \@serifRoman@b{.30}{-.35}% 左下ヒゲ
+      \or % Ⅴ
+        \@serifRoman@a{.30}{-.28}% 左上ヒゲ
+        \@serifRoman@a{.30}{.28}%% 右上ヒゲ
+      \or % Ⅵ
+        \@serifRoman@a{.30}{-.38}% 左上ヒゲ
+        \@serifRoman@a{.60}{.24}%% 右上ヒゲ
+        \@serifRoman@b{.30}{.34}%% 右下ヒゲ
+      \or % Ⅶ
+        \@serifRoman@a{.30}{-.41}% 左上ヒゲ
+        \@serifRoman@a{.75}{.20}%% 右上ヒゲ
+        \@serifRoman@b{.52}{.28}%% 右下ヒゲ
+      \or % Ⅷ
+        \@serifRoman@a{.30}{-.41}% 左上ヒゲ
+        \@serifRoman@a{.82}{.18}%% 右上ヒゲ
+        \@serifRoman@b{.65}{.245}% 右下ヒゲ
+      \or % Ⅸ
+        \@serifRoman@a{.25}{.33}%% 右上ヒゲ
+        \@serifRoman@a{.55}{-.22}% 左上ヒゲ
+        \@serifRoman@b{.55}{-.22}% 左下ヒゲ
+        \@serifRoman@b{.25}{.36}%% 右下ヒゲ
+      \or % Ⅹ
+        \@serifRoman@a{.25}{.23}%% 右上ヒゲ
+        \@serifRoman@a{.25}{-.23}% 左上ヒゲ
+        \@serifRoman@b{.25}{-.26}% 左下ヒゲ
+        \@serifRoman@b{.25}{.26}%% 右下ヒゲ
+      \or % Ⅺ
+        \@serifRoman@a{.55}{.23}%% 右上ヒゲ
+        \@serifRoman@a{.25}{-.34}% 左上ヒゲ
+        \@serifRoman@b{.25}{-.36}% 左下ヒゲ
+        \@serifRoman@b{.55}{.23}%% 右下ヒゲ
+      \or % Ⅻ
+        \@serifRoman@a{.75}{.20}%% 右上ヒゲ
+        \@serifRoman@a{.25}{-.38}% 左上ヒゲ
+        \@serifRoman@b{.25}{-.40}% 左下ヒゲ
+        \@serifRoman@b{.75}{.20}%% 右下ヒゲ
+    \fi
+    \end{tikzpicture}%
+    \hfill}%
+  \box1\relax
+  \endgroup
+  \kern-1zw\relax\zenkakuSpace %%% ゴースト処理（出口側）
+}
+\def\@serifRoman@a#1#2{%
+  \node[rotate=90,xscale=.7,yscale=#1] at ($(A.north) + (#2\@tempdimc,\@tempdima)$) {\@roman@I};
+}
+\def\@serifRoman@b#1#2{%
+  \node[rotate=90,xscale=.7,yscale=#1] at ($(A.south) + (#2\@tempdimc,\@tempdimb)$) {\@roman@I};
+}
+\makeatother
+
+
+%タイトル
+\title{軸対称Skyrme TDHFを用いた\\トンネル確率の計算}
+\author{\textbf{松本侑真}}
+\date{\today}
+\institute{原子核理論 関澤研究室}
+\titlegraphic{\includegraphics[scale=0.25]{fission_1.png}}
+%\titlegraphic{\adjincludegraphics[height=.5\linewidth,valign=t]{heikinba.png}}
+
+\begin{document}
+\maketitle
+%\frame{\tableofcontents[hideallsubsections]}
+
+\begin{frame}
+  \frametitle{研究概要}
+  \begin{itemize}
+    \item 3次元空間で軸対称性を課した原子核において、平均場理論に基づいた原子核の基底状態を求める自作プログラムを作成する。
+    \item 完成したプログラムを用いて、実時間発展ではトンネル効果を再現できないことを確認する。
+    \item 虚時間発展を組み込んで、平均場理論の枠組みでトンネル確率を計算することを目指す。
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{背景}
+  \begin{columns}[t]
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item トンネル効果によって生じる現象が存在する
+        \item 1次元模型では、ガモフによる$\alpha$崩壊の理論やWKB近似などがある
+        \item 実際の核分裂は多粒子系のトンネル現象かつ複雑な形状の自由度があり、微視的な計算が困難
+      \end{itemize}
+  
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \adjincludegraphics[height=1\linewidth,valign=t]{tunneling.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{背景}
+  J.W.Negele, Nuclear Mean-Field Theory, Physics Today 38, 24(1985)では
+  \begin{itemize}
+    \item 平均場理論＋経路積分でトンネル効果を記述し、1粒子系においてWKB近似の結果の再現
+    \item 少数核子系（\ce{^{8}Be}）の核分裂の応用
+  \end{itemize}
+  を行っている。しかし、結果の定量的な評価はしておらず、計算精度などの詳細はよくわからない。
+\end{frame}
+
+\begin{frame}{背景}
+  Patrick M. et al., Phys. Rev. C 102, 064614 (2018)では
+  \begin{itemize}
+    \item Toy model（1次元の二重井戸モデル）において、虚時間法の平均場理論を用いたトンネル確率の計算
+    \item 実時間発展では正しく計算できないことの確認
+  \end{itemize}
+  を行っている。
+  \begin{center}
+  \adjincludegraphics[height=0.3\linewidth,valign=t]{niju-ido.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{背景}
+  \begin{columns}[t]
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item 実時間発展では、{\color{blue}厳密解}と{\color{orange}計算値}の結果が異なる
+        \item 虚時間発展では、相互作用が強いほど{\color{blue}厳密解}に近づく
+        \item 右図のような結果を\textbf{現実的な原子核系}で再現することが研究の目標である。
+      \end{itemize}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \adjincludegraphics[width=1\linewidth,valign=t]{realtime-ev.png}
+      \adjincludegraphics[width=1\linewidth,valign=t]{imagtime-ev.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{研究手法：基底状態の求め方}
+  \begin{itemize}
+    \item Skyrme型の相互作用を入れたHartree-Fock（SHF）方程式を解いて原子核の基底状態を求める
+  \end{itemize}
+  \begin{block}{SHFの解き方}
+    \begin{enumerate}
+      \item 一粒子波動関数（スピノル）$\psi_{\alpha}$から、
+      密度
+      \begin{equation}
+        \rho(r,z),\,\bm{J}(r,z),\,\tau(r,\,z)
+      \end{equation}を計算する。
+      \item 各密度で表される平均場
+      \begin{equation}
+        U(r,z),\,\bm{W}(r,z),\,B(r,z)
+      \end{equation}
+      を計算する。
+      \item 平均場で構成される一粒子ハミルトニアン$\hat{h}_{\text{q}}$を用いて、基底状態のスピノルを求める。
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{研究手法：基底状態の求め方}
+密度や平均場が軸対称性を持つとき、スピノルは以下のように表される。
+\begin{equation}
+  \psi_{\alpha}(\bm{r}) =
+  \begin{pmatrix}
+    \psi_{\alpha}^{+}(\bm{r}) \\
+    \psi_{\alpha}^{-}(\bm{r})
+  \end{pmatrix}
+  = 
+  \begin{pmatrix}
+    f^{+}_{\alpha}(r,z)e^{im_{\alpha}\phi} \\
+    f^{-}_{\alpha}(r,z)e^{i(m_{\alpha}+1)\phi}
+  \end{pmatrix}
+\end{equation}
+このスピノルによって、密度は以下のように計算できる。
+\begin{gather}
+  \rho(r,z) = \sum_{\alpha}\qty[\abs{f_{\alpha}^{+}(\bm{r})}^2+\abs{f_{\alpha}^{-}(\bm{r})}^2],\quad 
+  \bm{J}(r,z) = \sum_{\alpha}\Im[\psi_{\alpha}^{\dagger}(\bm{r})(\bm{\nabla}\cross\bm{\sigma})\psi_{\alpha}(\bm{r})],\\
+  \tau(r,z) = \sum_{\alpha}\qty[\abs{\bm{\nabla}f_{\alpha}^{+}(\bm{r})}^2+\abs{\bm{\nabla}f_{\alpha}^{-}(\bm{r})}^2]
+\end{gather}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Hartree-Fock近似}
+  \begin{itemize}
+    \item Hartree-Fock（HF）近似は原子核の性質（束縛エネルギーや変形度）を上手く説明できる
+    \item 時間依存のHF方程式（TDHF方程式）は核子自由度から微視的に原子核ダイナミクスを記述できる
+  \end{itemize}
+  \begin{block}{TDHFの問題点}
+    \begin{itemize}
+      \item 多体波動関数が1つのSlater行列式で表されるという近似を用いている
+            \begin{itemize}
+              \item 複数のSlater行列式の線形結合で波動関数を表すことで、より正確な状態が得られることが知られている
+            \end{itemize}
+      \item 核分裂反応のような多体のトンネル現象を記述できない
+            \begin{itemize}
+              \item 平均場が1つしかなく、核分裂していない状態と核分裂している状態の重ね合わせが記述できない
+            \end{itemize}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}{まとめと今後の展望}
+  \begin{itemize}
+    \item 平均場理論＋経路積分でトンネル効果を記述できる
+    \item 1粒子系での例では、WKB近似の結果を再現できた
+    \item 重い核（\ce{^{238}U}など）に適用するためには計算コストや精度の問題があり、工夫が必要
+          \begin{itemize}
+            \item 波動関数が各粒子の座標$\bm{r}_1,\,\bm{r}_2,\,\dots,\,\bm{r}_N$に依存する
+            \item 多次元のポテンシャル面による透過問題（1次元ではない）
+            \item 精度を上げるためには空間、時間のメッシュ数を多くする必要がある
+            \item 現在のコンピュータでは計算可能
+          \end{itemize}
+    \item 卒研で1次元のHF計算を行い、虚時間法でトンネル現象の記述を試みる
+  \end{itemize}
+\end{frame}
+
+\appendix
+
+
+
+\begin{frame}
+  \small
+  \frametitle{Appendix：Hartree-Fock変分問題}
+  \begin{block}{エネルギー変分問題}
+    $N$体Fermi粒子系$X$のHilbert空間$\mathcal{H}_{\text{A}}^{(N)}$の任意の規格化された状態$\ket{\Psi}\in\mathcal{H}_{\text{A}}^{(N)}$
+    に対して、エネルギー汎関数$E[\ket{\Psi}]$を系$X$のHamilton演算子$\hat{H}$の期待値として定義する：
+    \begin{equation*}
+      E[\ket{\Psi}]\coloneqq \ev{\hat{H}}{\Psi}\quad\qty(\ket{\Psi}\in\mathcal{H}_{\text{A}}^{(N)},\,\braket{\Psi}=1)
+    \end{equation*}
+    規格化された状態$\ket{\Psi}$を$\mathcal{H}_{\text{A}}^{(N)}$全体で動かして、エネルギー汎関数$E[\ket{\Psi}]$が$\ket{\Psi}=\ket{\Psi_*}$で
+    最小値を取ったならば、$\ket{\Psi_*}=\ket{\Psi_{\text{g}}},\,E[\ket{\Psi_*}]=E_{\text{g}}$が成立する。\\
+    （系の厳密な基底状態を$\ket{\Psi_{\text{g}}}$、基底エネルギーを$E_{\text{g}}$とした。）
+  \end{block}
+  \begin{exampleblock}{HF変分問題}
+    変分に用いる状態$\ket{\Psi}$を、互いに直交している規格化された$N$個の1粒子状態$\ket{\phi_1},\ket{\phi_2},\ldots,\ket{\phi_{N}}\in\mathcal{H}_{\text{single}}$を用いた1つのSlater行列式
+    $\ket{\Psi}_{\text{A}}$に制限したエネルギー変分問題がHF変分問題であり、$\ket{\Psi_*}=\ket{\Psi^{\text{HF}}}$をHF状態と呼ぶ。
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Appendix：Hartree-Fock方程式}
+  \small
+  Lagrangeの未定乗数$\lambda_{ij}\in\mathbb{C}\;(i\leq i,j\leq N)$を導入して書き換えたHF変分問題
+  \begin{equation*}
+    \fdv{\ket{\Psi}}\qty[\ev{\hat{H}}{\Psi}-\sum_{i=1}^N\sum_{j=1}^{N}\lambda_{ij}(\braket{\phi_i}{\phi_j}-\delta_{ij})]=0
+  \end{equation*}
+  を満たす解$\ket{\Psi^{\text{HF}}}$がHF方程式で与えられる。変分計算により、以下のHF方程式を得る：
+  \begin{equation*}
+    \int d\bm{r}'\,\hat{h}_{\text{HF}}(\bm{r},\bm{r}')\phi_i(\bm{r}')  = \varepsilon_i\phi_i(\bm{r})
+  \end{equation*}
+  $\hat{h}_{\text{HF}}\in\mathcal{H}_{\text{single}}$はFock演算子と呼ばれる。\\
+  Fock演算子は、1粒子演算子$\hat{t}(\bm{r})$、Hartree項$\hat{\Gamma}_{\text{H}}(\bm{r})$、Fock項$\hat{\Gamma}_{\text{F}}(\bm{r},\bm{r}')$を用いて
+  \begin{equation*}
+    \hat{h}_{\text{HF}}(\bm{r,\bm{r}'})\coloneqq \qty[\hat{t}(\bm{r'})+\hat{\Gamma}_{\text{H}}(\bm{r}')]\delta(\bm{r}-\bm{r}')-\hat{\Gamma}_{\text{F}}(\bm{r},\bm{r}')
+  \end{equation*}
+  と定義される。
+\end{frame}
+
+\begin{frame}
+  \frametitle{Appendix：Hartree-Fock方程式}
+  \small
+  1粒子演算子$\hat{t}(\bm{r})$、Hartree項$\hat{\Gamma}_{\text{H}}(\bm{r})$、Fock項$\hat{\Gamma}_{\text{F}}(\bm{r},\bm{r}')$は、
+  HF方程式の解$\phi_i(\bm{r})\;(1\leq i\leq N)$に依存する：
+  \begin{gather*}
+    \hat{\Gamma}_{\text{H}}(\bm{r})\coloneqq \int d\bm{r}'\,\hat{v}(\bm{r},\bm{r}')\rho(\bm{r}'),\quad\hat{\Gamma}_{\text{F}}(\bm{r},\bm{r}')\coloneqq \hat{v}(\bm{r},\bm{r}')\rho(\bm{r},\bm{r}')      \\
+    \rho(\bm{r}) \coloneqq \sum_{i=1}^{N}\abs{\phi_i(\bm{r})}^2 ,\quad\rho(\bm{r},\bm{r}')\coloneqq \sum_{i=1}^{N}\phi_i(\bm{r})\phi_i^{*}(\bm{r}')
+  \end{gather*}
+  したがって、
+  \begin{enumerate}
+    \item 初期波動関数$\phi^{~0}_i(\bm{r})\;(1\leq i\leq N)$を与えて$\hat{h}^{0}_{\text{HF}}$を計算し、HF方程式を解く。
+    \item HF方程式の解$\phi^{~1}_i(\bm{r})\;(1\leq i\leq N)$から$\hat{h}^{1}_{\text{HF}}$を計算し、HF方程式を更新する。
+    \item 解が収束するまで更新を繰り返し、所望の精度で収束したときの解$\phi_i(\bm{r})\;(1\leq i\leq N)$を用いたSlater行列式がHF状態$\ket{\Psi^{\text{HF}}}$となる。
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Appendix：鞍点法を用いたトレースの計算過程}
+  \footnotesize
+  \begin{align*}
+    \trace{\frac{1}{E-\hat{H}+i\eta}} & \propto \sum_{klm}\underbrace{f_{klm}}_{=(-1)^{k+l+m}}e^{ikW_1(T)-lW_2(T)+imW_3(T)}                                                                           \\
+                                      & = \quad\; \sum_{k=1}^{\infty}\qty{-e^{iW_1}\sum_{l=0}^{\infty}\qty[-e^{-W_2}\sum_{m=0}^{\infty}(-e^{iW_3})^m]^l}^k                                            \\
+                                      & \quad\; + \sum_{l=1}^{\infty}\qty{-e^{-W_2}\sum_{m=0}^{\infty}\qty[-e^{iW_3}\sum_{k=0}^{\infty}(-e^{iW_1})^k]^m}^l                                            \\
+                                      & \quad\; + \sum_{m=1}^{\infty}\qty{-e^{iW_3}\sum_{k=0}^{\infty}\qty[-e^{iW_1}\sum_{k=0}^{\infty}(-e^{-W_2})^l]^k}^m                                            \\
+                                      & = \frac{-2e^{i(W_1+W_3)}-e^{iW_1}-e^{-W_2}-e^{iW_3}}{(1+e^{iW_1})(1+e^{iW_3})+e^{-W_2}}\xrightarrow[W_3\to0]{}\frac{-3e^{iW_1}-e^{-W_2}}{1+e^{iW_1}+e^{-W_2}}
+  \end{align*}
+\end{frame}
+
+
+
+
+\end{document}
