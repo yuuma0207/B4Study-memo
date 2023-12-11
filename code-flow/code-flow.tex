@@ -75,7 +75,50 @@ $W$に関係する項（W\_term）は
   \end{pmatrix}
 \end{align}
 
-
+\subsection{Poisson方程式}
+ときたいものは
+\begin{equation}
+  \pdv{r}\qty(r\pdv{f}{r}) + \pdv[2]{f}{z}  = \rho
+\end{equation}
+つまり
+\begin{equation}
+  \pdv[2]{f}{r} + \frac{1}{r}\pdv{f}{r} + \pdv[2]{f}{z} = 0
+\end{equation}
+中心差分でやると
+\begin{equation}
+  \frac{1}{r}\pdv{f}{r} = \frac{f_{i+1,j}-f_{i-1,j}}{2r\Delta r}
+\end{equation}
+\begin{equation}
+  \pdv[2]{f_{ij}}{r} = \frac{f_{i+1,j}-2f_{i,j}+f_{i-1,j}}{(\Delta r)^2}
+\end{equation}
+\begin{equation}
+  \pdv[2]{f_{ij}}{z} = \frac{f_{i,j+1}-2f_{i,j}+f_{i,j-1}}{(\Delta z)^2}
+\end{equation}
+となる。よって、
+\begin{equation}
+  \frac{f_{i+1,j}-2f_{i,j}+f_{i-1,j}}{(\Delta r)^2} 
+  +\frac{f_{i+1,j}-f_{i-1,j}}{2r\Delta r}
+  +\frac{f_{i,j+1}-2f_{i,j}+f_{i,j-1}}{(\Delta z)^2} = \rho_{ij}
+\end{equation}
+となる。
+\begin{equation}
+  \qty[\frac{1}{(\Delta z)^2}]f_{i,j-1}+\qty[\frac{1}{(\Delta r)^2}-\frac{1}{2r\Delta r}]f_{i-1,j} + \qty[\frac{-2}{(\varDelta r)^2} + \frac{-2}{(\varDelta z)^2}]f_{i,j}
+  + \qty[\frac{1}{(\varDelta r)^2} + \frac{1}{2r(\varDelta r)}]f_{i+1,j} + \qty[\frac{1}{(\varDelta z)^2}]f_{i,j+1} = \rho_{ij}
+\end{equation}
+となり、これは
+\begin{equation}
+  A_{2}f_{i,j-1}+A_{1}^{-}f_{i-1,j} + A_0f_{i,j} + A_{1}^{+}f_{i+1,j} + A_{2}f_{i,j+1} = \rho_{ij}
+\end{equation}
+となる。また、$i,j\to k$にマッピングするとき、$k$が与えられると
+\begin{align}
+  i &= \mathrm{mod}\,(k-1,N)+1 \\
+  j &= [k/N]+1 
+\end{align}
+と置くことができる。また、$(i,j)$が与えられると
+\begin{equation}
+  k = (j-1)N + i
+\end{equation}
+と与えられる。
 
 
 
