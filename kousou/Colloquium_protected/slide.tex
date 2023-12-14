@@ -1,5 +1,5 @@
 \RequirePackage{plautopatch}
-\documentclass[12pt,aspectratio=169,xcolor=dvipsnames,table,dvipdfmx]{beamer}
+\documentclass[11pt,aspectratio=169,xcolor=dvipsnames,table,dvipdfmx]{beamer}
 \usepackage{bxdpx-beamer} % dvipdfmxなので必要
 \usepackage{appendixnumberbeamer}
 
@@ -232,17 +232,21 @@
 \begin{frame}{背景}
   J.W.Negele, Nuclear Mean-Field Theory, Physics Today 38, 24(1985)では
   \begin{itemize}
-    \item 平均場理論＋経路積分でトンネル効果を記述し、1粒子系においてWKB近似の結果の再現
-    \item 少数核子系（\ce{^{8}Be}）の核分裂の応用
+    \item 平均場理論＋経路積分を用いて、1粒子系のトンネル現象でWKB近似の結果を再現
+    \item 少数核子系（\ce{^{8}Be}）の$\alpha$崩壊の計算に応用
   \end{itemize}
-  を行っている。しかし、結果の定量的な評価はしておらず、計算精度などの詳細はよくわからない。
+  を行っている。しかし、結果の定量的な評価はしておらず、詳細はよくわからない。
+  \adjincludegraphics[width=1\linewidth,valign=t]{Be.png}
 \end{frame}
 
 \begin{frame}{背景}
   Patrick M. et al., Phys. Rev. C 102, 064614 (2018)では
   \begin{itemize}
-    \item Toy model（1次元の二重井戸モデル）において、虚時間法の平均場理論を用いたトンネル確率の計算
-    \item 実時間発展では正しく計算できないことの確認
+    \item Toy model（1次元の二重井戸モデル）において、$L\to R$へのトンネル確率を虚時間法の平均場理論を用いて計算
+    \begin{itemize}
+      \item 2粒子系が$L$もしくは$R$の領域に束縛される場合を考えている
+    \end{itemize}
+    \item 実時間発展ではトンネル確率を正しく計算できないことの確認
   \end{itemize}
   を行っている。
   \begin{center}
@@ -254,9 +258,12 @@
   \begin{columns}[t]
     \begin{column}{.5\textwidth}
       \begin{itemize}
-        \item 実時間発展では、{\color{blue}厳密解}と{\color{orange}計算値}の結果が異なる
-        \item 虚時間発展では、相互作用が強いほど{\color{blue}厳密解}に近づく
-        \item 右図のような結果を\textbf{現実的な原子核系}で再現することが研究の目標である。
+        \item 実時間発展（上図）では、{\color{blue}厳密解}と{\color{orange}計算値}の結果が異なる
+        \item 虚時間発展（下図）では、相互作用が強いほど{\color{blue}厳密解}に近づく
+        \begin{itemize}
+          \item $\mu$は2粒子の波動関数が同じ井戸に存在する場合の引力相互作用の強さ
+        \end{itemize}
+        \item 下図のような結果を\textbf{現実的な原子核系}で再現することが研究の目標である。
       \end{itemize}
     \end{column}
     \begin{column}{.5\textwidth}
@@ -266,6 +273,27 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{背景：Hartree-Fock近似}
+  \begin{itemize}
+    \item Hartree-Fock（HF）近似は原子核の性質（束縛エネルギーや変形度）を上手く説明できる
+    \item 時間依存のHF方程式（TDHF方程式）は核子自由度から微視的に原子核ダイナミクスを記述できる
+  \end{itemize}
+  \begin{block}{TDHFの問題点}
+    \begin{itemize}
+      \item 多体波動関数が1つのSlater行列式で表されるという近似を用いている
+            \begin{itemize}
+              \item 複数のSlater行列式の線形結合で波動関数を表すことで、より正確な状態が得られることが知られている
+            \end{itemize}
+      \item 核分裂反応のような\textbf{多体のトンネル現象を記述できない}
+            \begin{itemize}
+              \item 平均場が1つしかなく、核分裂していない状態と核分裂している状態の重ね合わせが記述できない
+            \end{itemize}
+    \end{itemize}
+  \end{block}
+  トンネル現象を記述するためには何らかの工夫をする必要があり、そのための手法を開発することが研究の目標である。
+\end{frame}
+
+
 
 \begin{frame}{研究手法：基底状態の求め方}
   \begin{itemize}
@@ -273,7 +301,7 @@
   \end{itemize}
   \begin{block}{SHFの解き方}
     \begin{enumerate}
-      \item 一粒子波動関数（スピノル）$\psi_{\alpha}$から、
+      \item 核子の一粒子波動関数（スピノル）$\psi_{\alpha}$から、
       密度
       \begin{equation}
         \rho(r,z),\,\bm{J}(r,z),\,\tau(r,\,z)
@@ -289,7 +317,7 @@
 \end{frame}
 
 \begin{frame}{研究手法：基底状態の求め方}
-密度や平均場が軸対称性を持つとき、スピノルは以下のように表される。
+密度や平均場が軸対称性を持つとき、核子のスピノルは以下のように表される。
 \begin{equation}
   \psi_{\alpha}(\bm{r}) =
   \begin{pmatrix}
@@ -302,125 +330,48 @@
     f^{-}_{\alpha}(r,z)e^{i(m_{\alpha}+1)\phi}
   \end{pmatrix}
 \end{equation}
-このスピノルによって、密度は以下のように計算できる。
+このスピノルによって、密度は以下のように計算できる：
 \begin{gather}
   \rho(r,z) = \sum_{\alpha}\qty[\abs{f_{\alpha}^{+}(\bm{r})}^2+\abs{f_{\alpha}^{-}(\bm{r})}^2],\quad 
   \bm{J}(r,z) = \sum_{\alpha}\Im[\psi_{\alpha}^{\dagger}(\bm{r})(\bm{\nabla}\cross\bm{\sigma})\psi_{\alpha}(\bm{r})],\\
-  \tau(r,z) = \sum_{\alpha}\qty[\abs{\bm{\nabla}f_{\alpha}^{+}(\bm{r})}^2+\abs{\bm{\nabla}f_{\alpha}^{-}(\bm{r})}^2]
+  \tau(r,z) = \sum_{\alpha}\qty[\abs{\bm{\nabla}f_{\alpha}^{+}(\bm{r})}^2+\abs{\bm{\nabla}f_{\alpha}^{-}(\bm{r})}^2]\text{。}
 \end{gather}
 \end{frame}
 
+\begin{frame}{研究手法：基底状態の求め方}
+  本プログラムでは、虚時間法によって基底状態を求める。
+  虚時間法では、一粒子波動関数と平均場ポテンシャルの反復更新によって、系の全エネルギーが最小化される。系のHamiltonianを$\hat{H}$、固有エネルギーを$E_n$とする：
+  \begin{equation}
+    \hat{H}\ket{\Psi_{n}}=E_{n}\ket{\Psi_{n}}\quad (E_{0}\leq E_{1}\leq E_{2}\leq\cdots)\;\text{。}
+  \end{equation}
+  このとき、任意の状態$\ket{\xi}$は
+  \begin{equation}
+    \ket{\xi} = \sum_{n\geq 0} C_{n}\ket{\Psi_{n}}
+  \end{equation}
+  と展開される。このとき、$\tau>0$として$e^{-\hat{H}\tau/\hbar}\ket{\xi}$という状態を考えると、
+  \begin{equation}
+    e^{-\hat{H}\tau/\hbar}\ket{\xi} = \sum_{n\geq 0} C_{n}e^{-E_{n}\tau/\hbar}\ket{\Psi_{n}} = e^{-E_{0}\tau/\hbar}\qty(C_{0}\ket{\Psi_{0}}+\sum_{n\geq 1} C_{n}e^{-(E_{n}-E_{0})\tau/\hbar}\ket{\Psi_{n}})
+  \end{equation}  
+  と表される。$\tau\to\infty$のとき、$C_{0}\ket{\Psi_{0}}$の項のみが残り、基底状態を得ることができる。
+\end{frame}
 
-
-
-
-\begin{frame}{Hartree-Fock近似}
+\begin{frame}
+  \frametitle{研究手法：トンネル確率の計算}
   \begin{itemize}
-    \item Hartree-Fock（HF）近似は原子核の性質（束縛エネルギーや変形度）を上手く説明できる
-    \item 時間依存のHF方程式（TDHF方程式）は核子自由度から微視的に原子核ダイナミクスを記述できる
+    \item Patrick M, Microscopic Models of Nuclear Reactions Near the Coulomb Barrier, Ph.D. thesis, Australian National University (2023)では、
+    Toy modelでの手法を3次元の核子多体系へ応用しようと試みたが、失敗していることが示されている。
+    \item 具体的に何を試みているのか、どこが失敗しているのかは未調査だが、系の虚時間発展における\textbf{数値計算の安定性}が問題となっているようである。
+    \item 卒論では、Patrick(2023)での手法を参考にしながら、計算方法を考えていく予定である。
   \end{itemize}
-  \begin{block}{TDHFの問題点}
-    \begin{itemize}
-      \item 多体波動関数が1つのSlater行列式で表されるという近似を用いている
-            \begin{itemize}
-              \item 複数のSlater行列式の線形結合で波動関数を表すことで、より正確な状態が得られることが知られている
-            \end{itemize}
-      \item 核分裂反応のような多体のトンネル現象を記述できない
-            \begin{itemize}
-              \item 平均場が1つしかなく、核分裂していない状態と核分裂している状態の重ね合わせが記述できない
-            \end{itemize}
-    \end{itemize}
-  \end{block}
+  
+  
+
+  
+
 \end{frame}
 
 
-\begin{frame}{まとめと今後の展望}
-  \begin{itemize}
-    \item 平均場理論＋経路積分でトンネル効果を記述できる
-    \item 1粒子系での例では、WKB近似の結果を再現できた
-    \item 重い核（\ce{^{238}U}など）に適用するためには計算コストや精度の問題があり、工夫が必要
-          \begin{itemize}
-            \item 波動関数が各粒子の座標$\bm{r}_1,\,\bm{r}_2,\,\dots,\,\bm{r}_N$に依存する
-            \item 多次元のポテンシャル面による透過問題（1次元ではない）
-            \item 精度を上げるためには空間、時間のメッシュ数を多くする必要がある
-            \item 現在のコンピュータでは計算可能
-          \end{itemize}
-    \item 卒研で1次元のHF計算を行い、虚時間法でトンネル現象の記述を試みる
-  \end{itemize}
-\end{frame}
 
 \appendix
-
-
-
-\begin{frame}
-  \small
-  \frametitle{Appendix：Hartree-Fock変分問題}
-  \begin{block}{エネルギー変分問題}
-    $N$体Fermi粒子系$X$のHilbert空間$\mathcal{H}_{\text{A}}^{(N)}$の任意の規格化された状態$\ket{\Psi}\in\mathcal{H}_{\text{A}}^{(N)}$
-    に対して、エネルギー汎関数$E[\ket{\Psi}]$を系$X$のHamilton演算子$\hat{H}$の期待値として定義する：
-    \begin{equation*}
-      E[\ket{\Psi}]\coloneqq \ev{\hat{H}}{\Psi}\quad\qty(\ket{\Psi}\in\mathcal{H}_{\text{A}}^{(N)},\,\braket{\Psi}=1)
-    \end{equation*}
-    規格化された状態$\ket{\Psi}$を$\mathcal{H}_{\text{A}}^{(N)}$全体で動かして、エネルギー汎関数$E[\ket{\Psi}]$が$\ket{\Psi}=\ket{\Psi_*}$で
-    最小値を取ったならば、$\ket{\Psi_*}=\ket{\Psi_{\text{g}}},\,E[\ket{\Psi_*}]=E_{\text{g}}$が成立する。\\
-    （系の厳密な基底状態を$\ket{\Psi_{\text{g}}}$、基底エネルギーを$E_{\text{g}}$とした。）
-  \end{block}
-  \begin{exampleblock}{HF変分問題}
-    変分に用いる状態$\ket{\Psi}$を、互いに直交している規格化された$N$個の1粒子状態$\ket{\phi_1},\ket{\phi_2},\ldots,\ket{\phi_{N}}\in\mathcal{H}_{\text{single}}$を用いた1つのSlater行列式
-    $\ket{\Psi}_{\text{A}}$に制限したエネルギー変分問題がHF変分問題であり、$\ket{\Psi_*}=\ket{\Psi^{\text{HF}}}$をHF状態と呼ぶ。
-  \end{exampleblock}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Appendix：Hartree-Fock方程式}
-  \small
-  Lagrangeの未定乗数$\lambda_{ij}\in\mathbb{C}\;(i\leq i,j\leq N)$を導入して書き換えたHF変分問題
-  \begin{equation*}
-    \fdv{\ket{\Psi}}\qty[\ev{\hat{H}}{\Psi}-\sum_{i=1}^N\sum_{j=1}^{N}\lambda_{ij}(\braket{\phi_i}{\phi_j}-\delta_{ij})]=0
-  \end{equation*}
-  を満たす解$\ket{\Psi^{\text{HF}}}$がHF方程式で与えられる。変分計算により、以下のHF方程式を得る：
-  \begin{equation*}
-    \int d\bm{r}'\,\hat{h}_{\text{HF}}(\bm{r},\bm{r}')\phi_i(\bm{r}')  = \varepsilon_i\phi_i(\bm{r})
-  \end{equation*}
-  $\hat{h}_{\text{HF}}\in\mathcal{H}_{\text{single}}$はFock演算子と呼ばれる。\\
-  Fock演算子は、1粒子演算子$\hat{t}(\bm{r})$、Hartree項$\hat{\Gamma}_{\text{H}}(\bm{r})$、Fock項$\hat{\Gamma}_{\text{F}}(\bm{r},\bm{r}')$を用いて
-  \begin{equation*}
-    \hat{h}_{\text{HF}}(\bm{r,\bm{r}'})\coloneqq \qty[\hat{t}(\bm{r'})+\hat{\Gamma}_{\text{H}}(\bm{r}')]\delta(\bm{r}-\bm{r}')-\hat{\Gamma}_{\text{F}}(\bm{r},\bm{r}')
-  \end{equation*}
-  と定義される。
-\end{frame}
-
-\begin{frame}
-  \frametitle{Appendix：Hartree-Fock方程式}
-  \small
-  1粒子演算子$\hat{t}(\bm{r})$、Hartree項$\hat{\Gamma}_{\text{H}}(\bm{r})$、Fock項$\hat{\Gamma}_{\text{F}}(\bm{r},\bm{r}')$は、
-  HF方程式の解$\phi_i(\bm{r})\;(1\leq i\leq N)$に依存する：
-  \begin{gather*}
-    \hat{\Gamma}_{\text{H}}(\bm{r})\coloneqq \int d\bm{r}'\,\hat{v}(\bm{r},\bm{r}')\rho(\bm{r}'),\quad\hat{\Gamma}_{\text{F}}(\bm{r},\bm{r}')\coloneqq \hat{v}(\bm{r},\bm{r}')\rho(\bm{r},\bm{r}')      \\
-    \rho(\bm{r}) \coloneqq \sum_{i=1}^{N}\abs{\phi_i(\bm{r})}^2 ,\quad\rho(\bm{r},\bm{r}')\coloneqq \sum_{i=1}^{N}\phi_i(\bm{r})\phi_i^{*}(\bm{r}')
-  \end{gather*}
-  したがって、
-  \begin{enumerate}
-    \item 初期波動関数$\phi^{~0}_i(\bm{r})\;(1\leq i\leq N)$を与えて$\hat{h}^{0}_{\text{HF}}$を計算し、HF方程式を解く。
-    \item HF方程式の解$\phi^{~1}_i(\bm{r})\;(1\leq i\leq N)$から$\hat{h}^{1}_{\text{HF}}$を計算し、HF方程式を更新する。
-    \item 解が収束するまで更新を繰り返し、所望の精度で収束したときの解$\phi_i(\bm{r})\;(1\leq i\leq N)$を用いたSlater行列式がHF状態$\ket{\Psi^{\text{HF}}}$となる。
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Appendix：鞍点法を用いたトレースの計算過程}
-  \footnotesize
-  \begin{align*}
-    \trace{\frac{1}{E-\hat{H}+i\eta}} & \propto \sum_{klm}\underbrace{f_{klm}}_{=(-1)^{k+l+m}}e^{ikW_1(T)-lW_2(T)+imW_3(T)}                                                                           \\
-                                      & = \quad\; \sum_{k=1}^{\infty}\qty{-e^{iW_1}\sum_{l=0}^{\infty}\qty[-e^{-W_2}\sum_{m=0}^{\infty}(-e^{iW_3})^m]^l}^k                                            \\
-                                      & \quad\; + \sum_{l=1}^{\infty}\qty{-e^{-W_2}\sum_{m=0}^{\infty}\qty[-e^{iW_3}\sum_{k=0}^{\infty}(-e^{iW_1})^k]^m}^l                                            \\
-                                      & \quad\; + \sum_{m=1}^{\infty}\qty{-e^{iW_3}\sum_{k=0}^{\infty}\qty[-e^{iW_1}\sum_{k=0}^{\infty}(-e^{-W_2})^l]^k}^m                                            \\
-                                      & = \frac{-2e^{i(W_1+W_3)}-e^{iW_1}-e^{-W_2}-e^{iW_3}}{(1+e^{iW_1})(1+e^{iW_3})+e^{-W_2}}\xrightarrow[W_3\to0]{}\frac{-3e^{iW_1}-e^{-W_2}}{1+e^{iW_1}+e^{-W_2}}
-  \end{align*}
-\end{frame}
-
-
-
 
 \end{document}
