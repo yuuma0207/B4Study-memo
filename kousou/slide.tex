@@ -220,27 +220,32 @@
         \item 1次元模型では、ガモフによる$\alpha$崩壊の理論やWKB近似などがある
         \item 実際の核分裂は多粒子系のトンネル現象かつ複雑な形状の自由度があり、微視的な計算が困難
       \end{itemize}
+      \vskip\baselineskip
+      \begin{itemize}
+        \item \textbf{本研究の目的：} 平均場理論に虚時間法を適用し、核子自由度から微視的に多体のトンネル現象を記述すること
+      \end{itemize}
   
     \end{column}
     \begin{column}{.5\textwidth}
       \adjincludegraphics[height=1\linewidth,valign=t]{tunneling.png}
     \end{column}
   \end{columns}
+
 \end{frame}
 
 
 \begin{frame}{背景}
   J.W.Negele, Nuclear Mean-Field Theory, Physics Today 38, 24(1985)では
   \begin{itemize}
-    \item 平均場理論＋経路積分を用いて、1粒子系のトンネル現象でWKB近似の結果を再現
+    \item 平均場理論＋虚時間法の経路積分を用いて、1粒子系のトンネル現象でWKB近似の結果を再現
     \item 少数核子系（\ce{^{8}Be}）の$\alpha$崩壊の計算に応用
   \end{itemize}
-  を行っている。しかし、結果の定量的な評価はしておらず、詳細はよくわからない。
+  を行っている。しかし、結果の定量的な評価はしておらず、詳細は述べられていない。
   \adjincludegraphics[width=1\linewidth,valign=t]{Be.png}
 \end{frame}
 
 \begin{frame}{背景}
-  Patrick M. et al., Phys. Rev. C 102, 064614 (2018)では
+  P. McGlynn and C. Simenel, Phys. Rev. C 102, 064614 (2018)では
   \begin{itemize}
     \item Toy model（1次元の二重井戸モデル）において、$L\to R$へのトンネル確率を虚時間法の平均場理論を用いて計算
     \begin{itemize}
@@ -252,6 +257,9 @@
   \begin{center}
   \adjincludegraphics[height=0.3\linewidth,valign=t]{niju-ido.png}
   \end{center}
+  \begin{itemize}
+    \item あとでトンネル確率の式を説明するスライドを作成する
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{背景}
@@ -273,7 +281,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{背景：Hartree-Fock近似}
+\begin{frame}{理論的枠組み：Hartree-Fock近似}
   \begin{itemize}
     \item Hartree-Fock（HF）近似は原子核の性質（束縛エネルギーや変形度）を上手く説明できる
     \item 時間依存のHF方程式（TDHF方程式）は核子自由度から微視的に原子核ダイナミクスを記述できる
@@ -291,6 +299,9 @@
     \end{itemize}
   \end{block}
   トンネル現象を記述するためには何らかの工夫をする必要があり、そのための手法を開発することが研究の目標である。
+  \begin{itemize}
+    \item 経路積分＋虚時間法のことも説明する
+  \end{itemize}
 \end{frame}
 
 
@@ -312,6 +323,8 @@
       \end{equation}
       を計算する。
       \item 平均場で構成される一粒子ハミルトニアン$\hat{h}_{\text{q}}$を用いて、基底状態のスピノルを求める。
+      \item あとでSkyrme HFの式を載せる。多分虚時間発展の前にする
+      \item セルフコンシステントに解くことをいう
     \end{enumerate}
   \end{block}
 \end{frame}
@@ -336,9 +349,15 @@
   \bm{J}(r,z) = \sum_{\alpha}\Im[\psi_{\alpha}^{\dagger}(\bm{r})(\bm{\nabla}\cross\bm{\sigma})\psi_{\alpha}(\bm{r})],\\
   \tau(r,z) = \sum_{\alpha}\qty[\abs{\bm{\nabla}f_{\alpha}^{+}(\bm{r})}^2+\abs{\bm{\nabla}f_{\alpha}^{-}(\bm{r})}^2]\text{。}
 \end{gather}
+\begin{itemize}
+  \item 密度が求まるとポテンシャルが求まり、一粒子ハミルトニアンが求まることをかｋ
+\end{itemize}
 \end{frame}
 
 \begin{frame}{研究手法：基底状態の求め方}
+  \begin{itemize}
+    \item ここの虚時間法とトンネルの虚時間は別ものということに注意して話す
+  \end{itemize}
   本プログラムでは、虚時間法によって基底状態を求める。
   虚時間法では、一粒子波動関数と平均場ポテンシャルの反復更新によって、系の全エネルギーが最小化される。系のHamiltonianを$\hat{H}$、固有エネルギーを$E_n$とする：
   \begin{equation}
@@ -356,21 +375,24 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{研究手法：トンネル確率の計算}
+  \frametitle{背景：トンネル確率の計算（題名後で考える）背景にいれるものなのであとでかえる}
   \begin{itemize}
     \item Patrick M, Microscopic Models of Nuclear Reactions Near the Coulomb Barrier, Ph.D. thesis, Australian National University (2023)では、
     Toy modelでの手法を3次元の核子多体系へ応用しようと試みたが、失敗していることが示されている。
     \item 具体的に何を試みているのか、どこが失敗しているのかは未調査だが、系の虚時間発展における\textbf{数値計算の安定性}が問題となっているようである。
     \item 卒論では、Patrick(2023)での手法を参考にしながら、計算方法を考えていく予定である。
   \end{itemize}
-  
-  
 
   
 
 \end{frame}
 
+\begin{frame}
+  \frametitle{スケジュール感をかく}
 
+  
+
+\end{frame}
 
 \appendix
 

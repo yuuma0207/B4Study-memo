@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  15 DEC 2023 12:56
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  15 DEC 2023 13:12
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1271,6 +1271,10 @@ File: Be.png Graphic file (type bmp)
 ]
 File: niju-ido.png Graphic file (type bmp)
 <niju-ido.png>
+
+Overfull \vbox (9.88658pt too high) detected at line 263
+ []
+
 [5
 
 ]
@@ -1279,7 +1283,7 @@ File: realtime-ev.png Graphic file (type bmp)
 File: imagtime-ev.png Graphic file (type bmp)
 <imagtime-ev.png>
 
-Overfull \vbox (6.89285pt too high) detected at line 274
+Overfull \vbox (6.89285pt too high) detected at line 282
  []
 
 [6
@@ -1288,13 +1292,13 @@ Overfull \vbox (6.89285pt too high) detected at line 274
 
 ]
 LaTeX Font Info:    Font shape `JT2/hgt/bx/n' will be
-(Font)              scaled to size 7.69775pt on input line 317.
+(Font)              scaled to size 7.69775pt on input line 330.
 LaTeX Font Info:    Font shape `JY2/hgt/bx/n' will be
-(Font)              scaled to size 7.69775pt on input line 317.
+(Font)              scaled to size 7.69775pt on input line 330.
 LaTeX Font Info:    Font shape `T1/qhv/bx/n' in size <8> not available
-(Font)              Font shape `T1/qhv/b/n' tried instead on input line 317.
+(Font)              Font shape `T1/qhv/b/n' tried instead on input line 330.
 LaTeX Font Info:    Font shape `T1/qhv/b/n' will be
-(Font)              scaled to size 7.52002pt on input line 317.
+(Font)              scaled to size 7.52002pt on input line 330.
 [8
 
 ] [9
@@ -1303,10 +1307,12 @@ LaTeX Font Info:    Font shape `T1/qhv/b/n' will be
 
 ] [11
 
+] [12
+
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\translate ' on input line 375.
+(hyperref)                removing `\translate ' on input line 397.
 
 ***** List of packages loaded by `plautopatch': *****
  pxpgfrcs, plarray, pxpgfmark, pxjahyper, pxtextpos.
@@ -1325,12 +1331,12 @@ Package rerunfilecheck Info: File `slide.out' has not changed.
 (rerunfilecheck)             Checksum: 05B9FF7757FE6A446D8F294B02146D28;54.
  ) 
 Here is how much of TeX's memory you used:
- 33926 strings out of 475422
- 665510 string characters out of 5788032
- 954680 words of memory out of 5000000
- 54916 multiletter control sequences out of 15000+600000
+ 33928 strings out of 475422
+ 665526 string characters out of 5788032
+ 956680 words of memory out of 5000000
+ 54918 multiletter control sequences out of 15000+600000
  593675 words of font info for 144 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  128i,18n,122p,460b,1019s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/slide/slide.dvi (11 pages, 48652 bytes).
+Output written on out/slide/slide.dvi (12 pages, 54476 bytes).
