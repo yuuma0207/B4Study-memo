@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  17 DEC 2023 18:48
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  17 DEC 2023 19:13
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1307,7 +1307,11 @@ LaTeX Font Info:    Font shape `T1/qhv/b/n' will be
 (Font)              scaled to size 7.52002pt on input line 404.
 [12
 
-] [13
+]
+Overfull \vbox (7.26561pt too high) detected at line 430
+ []
+
+[13
 
 ] [14
 
@@ -1316,7 +1320,7 @@ LaTeX Font Info:    Font shape `T1/qhv/b/n' will be
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\translate ' on input line 474.
+(hyperref)                removing `\translate ' on input line 475.
 
 ***** List of packages loaded by `plautopatch': *****
  pxpgfrcs, plarray, pxpgfmark, pxjahyper, pxtextpos.
@@ -1337,10 +1341,10 @@ Package rerunfilecheck Info: File `slide.out' has not changed.
 Here is how much of TeX's memory you used:
  33954 strings out of 475422
  666254 string characters out of 5788032
- 956680 words of memory out of 5000000
+ 957680 words of memory out of 5000000
  54944 multiletter control sequences out of 15000+600000
  593675 words of font info for 144 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  128i,18n,122p,460b,1019s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/slide/slide.dvi (15 pages, 76788 bytes).
+Output written on out/slide/slide.dvi (15 pages, 77060 bytes).

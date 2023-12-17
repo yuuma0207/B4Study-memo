@@ -408,13 +408,14 @@
 \begin{frame}{研究手法：基底状態の求め方}
   \begin{itemize}
     \item Skyrme型の相互作用を入れたHartree-Fock（SHF）方程式をセルフコンシステントに解いて原子核の基底状態を求める。
-    \begin{equation}
-      \hat{h}_{\text{q}} = U_q(\bm{r}) - \div[B_q(\bm{r})\grad] + i\bm{W}_q(\bm{r})\cdot(\bm{\sigma}\cross\bm{\nabla})\quad\text{（SHF方程式）}
-    \end{equation}
+    \begin{gather}
+      \hat{h}_{\alpha}(\bm{r}) = U_\alpha(\bm{r}) - \div[B_\alpha(\bm{r})\grad] + i\bm{W}_\alpha(\bm{r})\cdot(\bm{\sigma}\cross\bm{\nabla})\quad\text{（一粒子ハミルトニアン）} \\
+      \hat{h}_{\alpha}(\bm{r})\psi_\alpha(\bm{r}) = \varepsilon_\alpha\psi_\alpha(\bm{r})\quad\text{（SHF方程式）}
+    \end{gather}
   \end{itemize}
-  \begin{block}{SHFの解き方}
+  \begin{block}{SHFの解き方（平均場が収束するまで繰り返す）}
     \begin{enumerate}
-      \item 核子の一粒子波動関数（スピノル）$\psi_{\alpha}$から、粒子密度、スピン-軌道密度、運動エネルギー密度
+      \item 核子の一粒子波動関数（スピノル）$\psi_{\alpha}$から、粒子数密度、スピン-軌道密度、運動エネルギー密度
       \begin{equation}
         \rho(r,z),\,\bm{J}(r,z),\,\tau(r,\,z)
       \end{equation}を計算する。
@@ -423,7 +424,7 @@
         U(r,z),\,\bm{W}(r,z),\,B(r,z)
       \end{equation}
       を計算する。
-      \item 平均場で構成される一粒子ハミルトニアン$\hat{h}_{\text{q}}$を用いて、スピノルの値を更新する。
+      \item 平均場で構成される一粒子ハミルトニアン$\hat{h}_{\alpha}$を用いて、スピノルの値を更新する。
     \end{enumerate}
   \end{block}
 \end{frame}
@@ -449,7 +450,7 @@
   \tau(r,z) = \sum_{\alpha}\qty[\abs{\bm{\nabla}f_{\alpha}^{+}(\bm{r})}^2+\abs{\bm{\nabla}f_{\alpha}^{-}(\bm{r})}^2]\text{。}
 \end{gather}
 \begin{itemize}
-  \item 密度$\rho,\,\bm{J},\,\tau$が求まると、平均場$U,\,\bm{W},\,B$が求まり、一粒子ハミルトニアン$\hat{h}_{\text{q}}$が求まる。
+  \item 密度$\rho,\,\bm{J},\,\tau$が求まると、平均場$U,\,\bm{W},\,B$が求まり、一粒子ハミルトニアン$\hat{h}_{\alpha}$が求まる。
 \end{itemize}
 \end{frame}
 
