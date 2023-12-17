@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  15 DEC 2023 13:12
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.11.21)  17 DEC 2023 18:48
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1224,58 +1224,64 @@ LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 
 ]
 LaTeX Font Info:    Trying to load font information for OT1+mlmr on input line 
-212.
+224.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/mlmodern/ot1mlmr.fd
 File: ot1mlmr.fd 2021/01/11 v1.0 Font defs for mlmodern
 )
 LaTeX Font Info:    Trying to load font information for OML+mlmm on input line 
-212.
+224.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/mlmodern/omlmlmm.fd
 File: omlmlmm.fd 2021/01/11 v1.0 Font defs for mlmodern
 )
 LaTeX Font Info:    Trying to load font information for OMS+mlmsy on input line
- 212.
+ 224.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/mlmodern/omsmlmsy.fd
 File: omsmlmsy.fd 2021/01/11 v1.0 Font defs for mlmodern
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 212
+LaTeX Font Info:    Trying to load font information for U+msa on input line 224
 .
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 212
+LaTeX Font Info:    Trying to load font information for U+msb on input line 224
 .
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Font shape `JT2/hgt/bx/n' will be
-(Font)              scaled to size 13.85594pt on input line 212.
-LaTeX Font Info:    Font shape `JY2/hgt/bx/n' will be
-(Font)              scaled to size 13.85594pt on input line 212.
-LaTeX Font Info:    Font shape `T1/qhv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/qhv/b/n' tried instead on input line 212.
-LaTeX Font Info:    Font shape `T1/qhv/b/n' will be
-(Font)              scaled to size 13.53603pt on input line 212.
-[2
-
-]
 File: tunneling.png Graphic file (type bmp)
 <tunneling.png>
-[3
+LaTeX Font Info:    Font shape `JT2/hgt/bx/n' will be
+(Font)              scaled to size 13.85594pt on input line 224.
+LaTeX Font Info:    Font shape `JY2/hgt/bx/n' will be
+(Font)              scaled to size 13.85594pt on input line 224.
+LaTeX Font Info:    Font shape `T1/qhv/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/qhv/b/n' tried instead on input line 224.
+LaTeX Font Info:    Font shape `T1/qhv/b/n' will be
+(Font)              scaled to size 13.53603pt on input line 224.
+[2
 
 ]
 File: Be.png Graphic file (type bmp)
 <Be.png>
-[4
+[3
+
+] [4
+
+] [5
 
 ]
 File: niju-ido.png Graphic file (type bmp)
 <niju-ido.png>
+[6
 
-Overfull \vbox (9.88658pt too high) detected at line 263
- []
+] [7
 
-[5
+]
+File: realtime-ev.png Graphic file (type bmp)
+<realtime-ev.png>
+[8
+
+] [9
 
 ]
 File: realtime-ev.png Graphic file (type bmp)
@@ -1283,36 +1289,34 @@ File: realtime-ev.png Graphic file (type bmp)
 File: imagtime-ev.png Graphic file (type bmp)
 <imagtime-ev.png>
 
-Overfull \vbox (6.89285pt too high) detected at line 282
+Overfull \vbox (6.89285pt too high) detected at line 368
  []
 
-[6
-
-] [7
-
-]
-LaTeX Font Info:    Font shape `JT2/hgt/bx/n' will be
-(Font)              scaled to size 7.69775pt on input line 330.
-LaTeX Font Info:    Font shape `JY2/hgt/bx/n' will be
-(Font)              scaled to size 7.69775pt on input line 330.
-LaTeX Font Info:    Font shape `T1/qhv/bx/n' in size <8> not available
-(Font)              Font shape `T1/qhv/b/n' tried instead on input line 330.
-LaTeX Font Info:    Font shape `T1/qhv/b/n' will be
-(Font)              scaled to size 7.52002pt on input line 330.
-[8
-
-] [9
-
-] [10
+[10
 
 ] [11
 
-] [12
+]
+LaTeX Font Info:    Font shape `JT2/hgt/bx/n' will be
+(Font)              scaled to size 7.69775pt on input line 404.
+LaTeX Font Info:    Font shape `JY2/hgt/bx/n' will be
+(Font)              scaled to size 7.69775pt on input line 404.
+LaTeX Font Info:    Font shape `T1/qhv/bx/n' in size <8> not available
+(Font)              Font shape `T1/qhv/b/n' tried instead on input line 404.
+LaTeX Font Info:    Font shape `T1/qhv/b/n' will be
+(Font)              scaled to size 7.52002pt on input line 404.
+[12
+
+] [13
+
+] [14
+
+] [15
 
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\translate ' on input line 397.
+(hyperref)                removing `\translate ' on input line 474.
 
 ***** List of packages loaded by `plautopatch': *****
  pxpgfrcs, plarray, pxpgfmark, pxjahyper, pxtextpos.
@@ -1331,12 +1335,12 @@ Package rerunfilecheck Info: File `slide.out' has not changed.
 (rerunfilecheck)             Checksum: 05B9FF7757FE6A446D8F294B02146D28;54.
  ) 
 Here is how much of TeX's memory you used:
- 33928 strings out of 475422
- 665526 string characters out of 5788032
+ 33954 strings out of 475422
+ 666254 string characters out of 5788032
  956680 words of memory out of 5000000
- 54918 multiletter control sequences out of 15000+600000
+ 54944 multiletter control sequences out of 15000+600000
  593675 words of font info for 144 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  128i,18n,122p,460b,1019s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/slide/slide.dvi (12 pages, 54476 bytes).
+Output written on out/slide/slide.dvi (15 pages, 76788 bytes).

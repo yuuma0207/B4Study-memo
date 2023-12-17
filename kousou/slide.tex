@@ -202,16 +202,6 @@
 \maketitle
 %\frame{\tableofcontents[hideallsubsections]}
 
-\begin{frame}
-  \frametitle{研究概要}
-  \begin{itemize}
-    \item 3次元空間で軸対称性を課した原子核において、平均場理論に基づいた原子核の基底状態を求める自作プログラムを作成する。
-    \item 完成したプログラムを用いて、実時間発展ではトンネル効果を再現できないことを確認する。
-    \item 虚時間発展を組み込んで、平均場理論の枠組みでトンネル確率を計算することを目指す。
-  \end{itemize}
-\end{frame}
-
-
 \begin{frame}{背景}
   \begin{columns}[t]
     \begin{column}{.5\textwidth}
@@ -222,7 +212,7 @@
       \end{itemize}
       \vskip\baselineskip
       \begin{itemize}
-        \item \textbf{本研究の目的：} 平均場理論に虚時間法を適用し、核子自由度から微視的に多体のトンネル現象を記述すること
+        \item \textbf{本研究の目的：} 平均場理論に虚時間発展を適用し、核子自由度から微視的に多体のトンネル現象を記述すること
       \end{itemize}
   
     \end{column}
@@ -237,53 +227,17 @@
 \begin{frame}{背景}
   J.W.Negele, Nuclear Mean-Field Theory, Physics Today 38, 24(1985)では
   \begin{itemize}
-    \item 平均場理論＋虚時間法の経路積分を用いて、1粒子系のトンネル現象でWKB近似の結果を再現
+    \item 平均場理論＋経路積分（虚時間発展の手法）を用いて、1粒子系のトンネル現象でWKB近似の結果を再現
     \item 少数核子系（\ce{^{8}Be}）の$\alpha$崩壊の計算に応用
   \end{itemize}
   を行っている。しかし、結果の定量的な評価はしておらず、詳細は述べられていない。
   \adjincludegraphics[width=1\linewidth,valign=t]{Be.png}
 \end{frame}
 
-\begin{frame}{背景}
-  P. McGlynn and C. Simenel, Phys. Rev. C 102, 064614 (2018)では
-  \begin{itemize}
-    \item Toy model（1次元の二重井戸モデル）において、$L\to R$へのトンネル確率を虚時間法の平均場理論を用いて計算
-    \begin{itemize}
-      \item 2粒子系が$L$もしくは$R$の領域に束縛される場合を考えている
-    \end{itemize}
-    \item 実時間発展ではトンネル確率を正しく計算できないことの確認
-  \end{itemize}
-  を行っている。
-  \begin{center}
-  \adjincludegraphics[height=0.3\linewidth,valign=t]{niju-ido.png}
-  \end{center}
-  \begin{itemize}
-    \item あとでトンネル確率の式を説明するスライドを作成する
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{背景}
-  \begin{columns}[t]
-    \begin{column}{.5\textwidth}
-      \begin{itemize}
-        \item 実時間発展（上図）では、{\color{blue}厳密解}と{\color{orange}計算値}の結果が異なる
-        \item 虚時間発展（下図）では、相互作用が強いほど{\color{blue}厳密解}に近づく
-        \begin{itemize}
-          \item $\mu$は2粒子の波動関数が同じ井戸に存在する場合の引力相互作用の強さ
-        \end{itemize}
-        \item 下図のような結果を\textbf{現実的な原子核系}で再現することが研究の目標である。
-      \end{itemize}
-    \end{column}
-    \begin{column}{.5\textwidth}
-      \adjincludegraphics[width=1\linewidth,valign=t]{realtime-ev.png}
-      \adjincludegraphics[width=1\linewidth,valign=t]{imagtime-ev.png}
-    \end{column}
-  \end{columns}
-\end{frame}
 
 \begin{frame}{理論的枠組み：Hartree-Fock近似}
   \begin{itemize}
-    \item Hartree-Fock（HF）近似は原子核の性質（束縛エネルギーや変形度）を上手く説明できる
+    \item Hartree-Fock（HF）近似は平均場理論の近似法であり、原子核の性質（束縛エネルギーや変形度）を上手く説明できる
     \item 時間依存のHF方程式（TDHF方程式）は核子自由度から微視的に原子核ダイナミクスを記述できる
   \end{itemize}
   \begin{block}{TDHFの問題点}
@@ -299,32 +253,177 @@
     \end{itemize}
   \end{block}
   トンネル現象を記述するためには何らかの工夫をする必要があり、そのための手法を開発することが研究の目標である。
+\end{frame}
+
+\begin{frame}{理論的枠組み：経路積分＋虚時間発展}
   \begin{itemize}
-    \item 経路積分＋虚時間法のことも説明する
+    \item ハミルトニアンが$\hat{H}$である系の時間発展演算子$U$は$U=e^{-i\hat{H}t/\hbar}$である。
+    \item 初期状態$\ket{i}$が終状態$\ket{f}$に遷移する確率振幅は、作用$S$を用いて経路積分で表される：
+    \begin{equation}
+      \bra{f}U\ket{i} = \int\mathcal{D}[q]\exp(\frac{i}{\hbar}S[q])\;\text{。}
+    \end{equation}
+    \item $\tau$を実数として、$t\to -i\tau$の変換をWick回転と呼ぶ。Wick回転を施した時間発展
+    \begin{equation}
+      \psi(\tau) = \exp(-\hat{H}\tau/\hbar)\psi(0)
+    \end{equation}
+    は、虚時間発展と呼ばれる。
+    \item Negele(1985)によると、経路積分に虚時間発展を用いた計算を行うことで、WKB近似におけるトンネル効果の理論を再現できる。
   \end{itemize}
+\end{frame}
+
+\begin{frame}{背景：Toy model（二重井戸モデル）でのトンネル効果}
+  P. McGlynn and C. Simenel, Phys. Rev. C 102, 064614 (2018)では
+  \begin{itemize}
+    \item Toy model（1次元の二重井戸モデル）において、$L\to R$へのトンネル確率を平均場理論＋虚時間発展を用いて計算
+    \begin{itemize}
+      \item 2粒子系が$L$もしくは$R$の領域に束縛される場合を考えている
+    \end{itemize}
+    \item 平均場理論＋実時間発展ではトンネル確率を正しく計算できないことの確認
+  \end{itemize}
+  を行っている。
+  \begin{center}
+  \adjincludegraphics[height=0.3\linewidth,valign=t]{niju-ido.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{背景：Toy model（二重井戸モデル）でのトンネル効果}
+  2粒子系の二重井戸モデルのハミルトニアン$\hat{H}\in\mathcal{L}(\mathcal{H}\otimes\mathcal{H})$は、以下のように表される：
+  \begin{equation}
+    \hat{H} = \hat{h}_0\otimes\hat{1}+\hat{1}\otimes\hat{h}_0+\hat{v}\;\text{。}
+  \end{equation}
+  ここで、$\ket{-}$を励起状態とし、基底状態$\ket{+}$のエネルギーは$0$とする（二準位系）。左右の井戸に粒子が存在していることを表す状態$\ket{L},\,\ket{R}$を用いて
+  \begin{equation}
+    \ket{\pm} = \frac{1}{\sqrt{2}}\qty(\ket{L}\pm\ket{R})
+  \end{equation}
+  と表される。このとき、一粒子ハミルトン$\hat{h_0}$と、相互作用項$\hat{v}$は
+  \begin{equation}
+    \hat{h}_0 = \alpha\ketbra{-}\;\text{,}\quad \hat{v} = \mu(\ketbra{LL} + \ketbra{RR})
+  \end{equation}
+  となる。なお、時刻$t$における一般の状態$\ket{\psi(t)}$は、$\ket{L},\,\ket{R}$の重ね合わせで表される：
+  \begin{equation}
+    \ket{\psi(t)} = L(t)\ket{L} + R(t)\ket{R}\;\text{。}
+  \end{equation}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{背景：平均場理論＋実時間発展を用いたToy modelのトンネル確率}
+  \begin{itemize}
+    \item 左の井戸に存在する粒子数の期待値$\ev{\hat{N}_{L}}$の{\color{blue}厳密解}は以下のようになる：
+          \begin{equation}
+            \ev{\hat{N}_{L}} = 1 + \frac{\beta-\mu}{2\beta}\cos\qty(\frac{\beta+\mu}{2}t) + 
+            \frac{\beta + \mu}{2}\cos\qty(\frac{\beta-\mu}{2}t)\;\text{,}\quad \beta = \sqrt{4\alpha^2+\mu^2}\;\text{。}
+          \end{equation}
+    \item {\color{orange}平均場理論を用いた実時間発展の解}は、$\ev{\hat{N}_{L}} \propto 1 + \sin\theta(t)$となる。
+  \end{itemize}
+  \begin{columns}[t]
+    \begin{column}{.45\textwidth}
+      \begin{itemize}
+        \item $\mu$が増加すると、平均場理論の結果は急速に厳密解からずれていく。
+        \item 特に、$\abs{\mu}>2$の``強い''相互作用が働く場合は、\textbf{片方の井戸に粒子が束縛される}結果となってしまい、トンネル効果が記述できない。
+      \end{itemize}
+    \end{column}
+    \begin{column}{.55\textwidth}
+      \adjincludegraphics[width=1\linewidth,valign=t]{realtime-ev.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{背景：平均場理論＋虚時間発展を用いたToy modelのトンネル確率}
+  \begin{itemize}
+    \item 平均場理論に虚時間発展（Wick回転：$t\to -i\tau$）を組み込むことで、トンネル効果を記述できることが知られている。このアプローチ方法は、WKB半古典近似と等価なものである。
+    \item $\theta = \arcsin(\abs{L}^2-\abs{R}^2),\,\phi = \arg(R/L)$で定義されるパラメータ$\theta,\,\phi$を導入する。このパラメータを持つ状態の時間発展は
+    \begin{equation}
+      \dv{\theta}{\tau} = i\sin\phi,\quad \dv{\phi}{\tau} = -i\tan\theta\cos\phi - i\mu\sin\theta
+    \end{equation}
+    の式に従い、一般に複素数である。
+    \item $(\theta,\,\phi)$でラベルされる状態のトンネル確率$P(\theta,\,\phi)$は、
+    \begin{equation}
+      P(\theta,\,\phi) = \abs{e^{iW[\theta,\,\phi]}}^2 \coloneqq \abs{\exp(\frac{i}{2}\int_0^T d\tau\, (\tan\theta(\tau)\cos\phi(\tau) + \mu\sin\theta(\tau))\sin\theta(\tau))}^2
+    \end{equation}
+    で与えられる。初期状態の$(\theta,\,\phi)$を定めると、Toy modelにおけるトンネル確率が平均場理論＋虚時間発展の枠組みで計算できる。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{背景：Toy modelのトンネル確率（まとめ）}
+  \begin{columns}[t]
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item 実時間発展（上図）では、{\color{blue}厳密解}と{\color{orange}計算値}の結果が異なる
+        \item 虚時間発展（下図）では、相互作用が強いほど{\color{blue}厳密解}に近づく
+        \begin{itemize}
+          \item {\color{blue}厳密解}はWKB近似から計算される値を用いている
+          \item $\mu$は2粒子の波動関数が同じ井戸に存在する場合の引力相互作用の強さ
+        \end{itemize}
+        \item 下図のような結果を\textbf{現実的な原子核系}で再現することが研究の目標である。
+      \end{itemize}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \adjincludegraphics[width=1\linewidth,valign=t]{realtime-ev.png}
+      \adjincludegraphics[width=1\linewidth,valign=t]{imagtime-ev.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{背景：核子多体系におけるトンネル確率の計算}
+  \begin{itemize}
+    \item P. McGlynn, Microscopic Models of Nuclear Reactions Near the Coulomb Barrier, Ph.D. thesis, Australian National University (2023)では、
+    Toy modelでの手法を3次元の核子多体系へ応用しようと試みたが、失敗していることが示されている。
+    \item 具体的に何を試みているのか、どこが失敗しているのかは未調査だが、系の虚時間発展における\textbf{数値計算の安定性}が問題となっているようである。
+    \item 卒論では、McGlynn(2023)での手法を参考にしながら、トンネル確率の計算方法を考えていく予定である。
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{自分の卒業研究について}
+  \begin{block}{研究概要}
+    \begin{enumerate}
+      \item 3次元空間で軸対称性を課した原子核において、平均場理論に基づいた原子核の基底状態を求める自作プログラムを作成する。
+      \item 完成したプログラムを用いて、実時間発展ではトンネル効果を再現できないことを確認する。
+      \item 虚時間発展を組み込んで、平均場理論の枠組みでトンネル確率を計算することを目指す。
+    \end{enumerate}
+  \end{block}
+  \begin{exampleblock}{研究の現状と今後の予定}
+    \begin{itemize}
+      \item 現在は、原子核の基底状態を求める自作プログラムの作成途中である。
+      \begin{itemize}
+        \item 12月末を目処に基底状態を求めるプログラムを完了させる予定である。
+      \end{itemize}
+      \item 基底状態のプログラムが完成した後に行うこと：
+      \begin{itemize}
+        \item 虚時間発展を組み込む方法を検討する（論文の手法をまとめるだけで終わるかもしれない）。
+        \item プログラムを改良して原子核の実時間・虚時間発展を計算する。
+      \end{itemize}
+    \end{itemize}
+  \end{exampleblock}
+
 \end{frame}
 
 
 
 \begin{frame}{研究手法：基底状態の求め方}
   \begin{itemize}
-    \item Skyrme型の相互作用を入れたHartree-Fock（SHF）方程式を解いて原子核の基底状態を求める
+    \item Skyrme型の相互作用を入れたHartree-Fock（SHF）方程式をセルフコンシステントに解いて原子核の基底状態を求める。
+    \begin{equation}
+      \hat{h}_{\text{q}} = U_q(\bm{r}) - \div[B_q(\bm{r})\grad] + i\bm{W}_q(\bm{r})\cdot(\bm{\sigma}\cross\bm{\nabla})\quad\text{（SHF方程式）}
+    \end{equation}
   \end{itemize}
   \begin{block}{SHFの解き方}
     \begin{enumerate}
-      \item 核子の一粒子波動関数（スピノル）$\psi_{\alpha}$から、
-      密度
+      \item 核子の一粒子波動関数（スピノル）$\psi_{\alpha}$から、粒子密度、スピン-軌道密度、運動エネルギー密度
       \begin{equation}
         \rho(r,z),\,\bm{J}(r,z),\,\tau(r,\,z)
       \end{equation}を計算する。
-      \item 各密度で表される平均場
+      \item 各密度に依存した平均場
       \begin{equation}
         U(r,z),\,\bm{W}(r,z),\,B(r,z)
       \end{equation}
       を計算する。
-      \item 平均場で構成される一粒子ハミルトニアン$\hat{h}_{\text{q}}$を用いて、基底状態のスピノルを求める。
-      \item あとでSkyrme HFの式を載せる。多分虚時間発展の前にする
-      \item セルフコンシステントに解くことをいう
+      \item 平均場で構成される一粒子ハミルトニアン$\hat{h}_{\text{q}}$を用いて、スピノルの値を更新する。
     \end{enumerate}
   \end{block}
 \end{frame}
@@ -350,16 +449,13 @@
   \tau(r,z) = \sum_{\alpha}\qty[\abs{\bm{\nabla}f_{\alpha}^{+}(\bm{r})}^2+\abs{\bm{\nabla}f_{\alpha}^{-}(\bm{r})}^2]\text{。}
 \end{gather}
 \begin{itemize}
-  \item 密度が求まるとポテンシャルが求まり、一粒子ハミルトニアンが求まることをかｋ
+  \item 密度$\rho,\,\bm{J},\,\tau$が求まると、平均場$U,\,\bm{W},\,B$が求まり、一粒子ハミルトニアン$\hat{h}_{\text{q}}$が求まる。
 \end{itemize}
 \end{frame}
 
 \begin{frame}{研究手法：基底状態の求め方}
-  \begin{itemize}
-    \item ここの虚時間法とトンネルの虚時間は別ものということに注意して話す
-  \end{itemize}
-  本プログラムでは、虚時間法によって基底状態を求める。
-  虚時間法では、一粒子波動関数と平均場ポテンシャルの反復更新によって、系の全エネルギーが最小化される。系のHamiltonianを$\hat{H}$、固有エネルギーを$E_n$とする：
+  本プログラムでは、``虚時間法''（$\neq$虚時間発展）によって基底状態を求める。
+  虚時間法では、\textbf{一粒子波動関数と平均場ポテンシャルの反復更新}によって、系の全エネルギーが最小化される。系のHamiltonianを$\hat{H}$、固有エネルギーを$E_n$とする：
   \begin{equation}
     \hat{H}\ket{\Psi_{n}}=E_{n}\ket{\Psi_{n}}\quad (E_{0}\leq E_{1}\leq E_{2}\leq\cdots)\;\text{。}
   \end{equation}
@@ -374,25 +470,6 @@
   と表される。$\tau\to\infty$のとき、$C_{0}\ket{\Psi_{0}}$の項のみが残り、基底状態を得ることができる。
 \end{frame}
 
-\begin{frame}
-  \frametitle{背景：トンネル確率の計算（題名後で考える）背景にいれるものなのであとでかえる}
-  \begin{itemize}
-    \item Patrick M, Microscopic Models of Nuclear Reactions Near the Coulomb Barrier, Ph.D. thesis, Australian National University (2023)では、
-    Toy modelでの手法を3次元の核子多体系へ応用しようと試みたが、失敗していることが示されている。
-    \item 具体的に何を試みているのか、どこが失敗しているのかは未調査だが、系の虚時間発展における\textbf{数値計算の安定性}が問題となっているようである。
-    \item 卒論では、Patrick(2023)での手法を参考にしながら、計算方法を考えていく予定である。
-  \end{itemize}
-
-  
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{スケジュール感をかく}
-
-  
-
-\end{frame}
 
 \appendix
 
